@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { TextField, Button, Typography, Paper, MenuItem, Autocomplete } from "@mui/material"
+import { TextField, Button, Typography, Paper, Autocomplete } from "@mui/material"
 import { useDispatch, useSelector } from 'react-redux';
 import {createProject, updateProject } from '../../actions/projects';
 
@@ -11,7 +11,8 @@ const FormProject = ({ currentId, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const project = useSelector((state) => currentId ? state.projects.find((p) => p.projects_id === currentId) : null);
-
+    const user = JSON.parse(localStorage.getItem('profile'));
+    const userId = user?.result?.rows[0]?.users_id;
 
     useEffect(() => {
       if(project) setProjectData(project);
@@ -58,22 +59,27 @@ const FormProject = ({ currentId, setCurrentId }) => {
           },
       ]
     return ( 
-        <Paper className={classes.paper}>
+        <>
+         {(userId === 1) && (
+        <Paper className={classes.paper} elevation={6}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
             <Typography variant="h6">{currentId ? 'Editing' : 'Add'} a Project</Typography>
-            <TextField name="project_name" variant="outlined" label="Project Name" fullWidth="true" 
+            <TextField required name="project_name" variant="outlined" label="Project Name" fullWidth="true" 
             value={projectData.project_name} onChange={(e) => setProjectData({ ...projectData, project_name: e.target.value })}/>
-            <TextField name="budget" variant="outlined" label="Budget" fullWidth="true" 
+            <TextField required name="budget" variant="outlined" label="Budget" fullWidth="true" 
             value={projectData.budget} onChange={(e) => setProjectData({ ...projectData, budget: e.target.value })}/>
-            <TextField name="start_date" variant="outlined" label="Start Date" InputLabelProps={{ shrink: true, required: true }} type="date" fullwidth="true" value={projectData.start_date} onChange={(e) => setProjectData({ ...projectData, start_date: e.target.value })}/>
-            <TextField name="end_date" variant="outlined" label="Estimated Deadline" InputLabelProps={{ shrink: true, required: true }} type="date" fullwidth="true" value={projectData.end_date} onChange={(e) => setProjectData({ ...projectData, end_date: e.target.value })}/>
-            <TextField name="description" variant="outlined" label="Description" 
+            <TextField required name="start_date" variant="outlined" label="Start Date" InputLabelProps={{ shrink: true, required: true }} type="date" fullwidth="true" value={projectData.start_date} onChange={(e) => setProjectData({ ...projectData, start_date: e.target.value })}/>
+            <TextField required name="end_date" variant="outlined" label="Estimated Deadline" InputLabelProps={{ shrink: true, required: true }} type="date" fullwidth="true" value={projectData.end_date} onChange={(e) => setProjectData({ ...projectData, end_date: e.target.value })}/>
+            <TextField required name="description" variant="outlined" label="Description" 
             fullWidth="true" value={projectData.description} onChange={(e) => setProjectData({ ...projectData, description: e.target.value })}/>
-            <Autocomplete options={projectManager} sx={{ width: 500 }} isOptionEqualToValue={(option) => option.label} onChange={(event, newValue) => {setProjectData({ ...projectData, project_manager: newValue.value });}} renderInput={(params) => (<TextField {...params} placeholder="Project Manager" />)}/>
+            <Autocomplete required options={projectManager} sx={{ width: 500 }} isOptionEqualToValue={(option) => option.label} onChange={(event, newValue) => {setProjectData({ ...projectData, project_manager: newValue.value });}} renderInput={(params) => (<TextField {...params} placeholder="Project Manager" />)}/>
             <Button className={classes.buttonSubmit} color="primary" size="large" type="submit" fullWidth="true">Submit</Button>
             <Button color="secondary" size="small" onClick={clear} fullWidth="true">Clear</Button>
             </form>
         </Paper>
+        )}
+        </>
+        
      );
 }
  

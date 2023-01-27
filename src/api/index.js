@@ -1,8 +1,21 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/projects";
+const API = axios.create({ baseURL: 'http://localhost:5000'});
 
-export const fetchProjects = () => axios.get(url); 
-export const createProject = (newProject) => axios.post(url, newProject);
-export const updateProject = (id, updatedProject) => axios.patch(`${url}/${id}`, updatedProject);
-export const deleteProject = (id) => axios.delete(`${url}/${id}`);
+API.interceptors.request.use((req) => {
+    if (localStorage.getItem('profile')) {
+      req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+    }
+  
+    return req;
+  });
+
+export const fetchProjects = (page) => API.get(`/projects?page=${page}`);
+export const fetchProjectsBySearch = (searchQuery) => API.get(`/projects/search?searchQuery=${searchQuery.search || 'none'}`);
+export const createProject = (newProject) => API.post('/projects', newProject);
+export const updateProject = (id, updatedProject) => API.patch(`/projects/${id}`, updatedProject);
+export const deleteProject = (id) => API.delete(`/projects/${id}`);
+
+export const signIn = (formData) => API.post('/auth/signin', formData);
+
+

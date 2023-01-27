@@ -1,6 +1,7 @@
-import * as React from 'react';
-import { Link } from "react-router-dom";
-
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,22 +19,50 @@ import TaskIcon from '@mui/icons-material/Task';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import LogoutIcon from '@mui/icons-material/Logout';
 import vcclogo from '../../images/vcclogo.jpg';
-
 const drawerWidth = 240;
 
-const Sidebar = () => {
+  const Sidebar = () => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const drawer = (
-    <div>
-      <Toolbar>
-      <img src={vcclogo} alt="vcclogo" height="70px" width="150px" />
-      </Toolbar>
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
+  const dispatch = useDispatch();
+
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+
+    localStorage.removeItem('profile');
+
+    dispatch({ type: 'LOGOUT '});
+
+    navigate('loginpage')
+
+    setUser(null);
+  }
+
+  useEffect(() => {
+    const token = user?.token;
+
+    if (token) {
+      const decodedToken = decode(token);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
+
+  const drawer = (
+    
+    <div>
+      <Toolbar><img src={vcclogo} alt="vcclogo" height="70px" width="150px" /></Toolbar>
       <List>
           <ListItem disablePadding>
             <ListItemButton component={Link} to="/">
@@ -69,19 +98,11 @@ const Sidebar = () => {
           </ListItem>
           <Divider />
           <ListItem disablePadding>
-            <ListItemButton component={Link} to="/logout">
+            <ListItemButton onClick={logout}>
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>
               <ListItemText primary="Logout" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component={Link} to="/loginpage">
-              <ListItemIcon>
-                <LogoutIcon />
-              </ListItemIcon>
-              <ListItemText primary="LogIn" />
             </ListItemButton>
           </ListItem>
         </List>

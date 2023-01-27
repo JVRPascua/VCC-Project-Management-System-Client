@@ -1,51 +1,41 @@
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import { Container, Box } from "@mui/material";
-import styled from "@emotion/styled";
-import LoginForm from "./LoginForm";
+import React, {useState} from "react";
+import { Container, Paper, Typography, Grid, TextField, InputAdornment, IconButton, Button } from "@mui/material";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useDispatch } from 'react-redux';
+import { useNavigate} from "react-router-dom";
+import { signin } from '../../actions/auth';
 import Logo from "./Logo";
+import useStyles from './styles';
 import { motion } from "framer-motion";
+import { RootStyle, HeadingStyle, ContentStyle, fadeInUp } from "./styles2";
 
-//////////////////////////////////
-const RootStyle = styled("div")({
-  background: "rgb(249, 250, 251)",
-  height: "100vh",
-  display: "grid",
-  placeItems: "center",
-});
+const initialState = { username: '', password: '' };
 
-const HeadingStyle = styled(Box)({
-  textAlign: "center",
-});
+const Login = () => {
 
-const ContentStyle = styled("div")({
-  maxWidth: 480,
-  padding: 25,
-  margin: "auto",
-  display: "flex",
-  justifyContent: "center",
-  flexDirection: "column",
-  background: "#fff",
-});
+    const classes = useStyles();
 
-let easing = [0.6, -0.05, 0.01, 0.99];
-const fadeInUp = {
-  initial: {
-    y: 60,
-    opacity: 0,
-    transition: { duration: 0.6, ease: easing },
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-};
+    const dispatch = useDispatch();
 
-const Login = ({ setAuth }) => {
+    const navigate = useNavigate();
+
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleMouseDownPassword = () => setShowPassword(!showPassword);
+
+    const [formData, setFormData] = useState(initialState);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        dispatch(signin(formData, navigate))
+    }
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
   return (
     <RootStyle>
       <Container maxWidth="sm">
@@ -53,10 +43,42 @@ const Login = ({ setAuth }) => {
           <HeadingStyle component={motion.div} {...fadeInUp}>
             <Logo />
           </HeadingStyle>
-          <LoginForm setAuth={setAuth} />
+          <Container component="main" maxWidth="xs">
+            <Paper className={classes.paper} elevation={3}>
+            <Typography variant="h6">Sign In</Typography>
+            <form className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+                <Grid container spacing={1}>
+                    <>
+                    <Grid xs={6} md={12}>
+                        <TextField name="username" label="Enter Username" variant="outlined" required fullWidth="true" onChange={handleChange} type="text" autoFocus xs={6}/>
+                    </Grid>
+                    <Grid xs={6} md={12}>
+                    <TextField name="password" label='Enter Password' variant="outlined" fullWidth="true" required type={showPassword ? "text" : "password"} onChange={handleChange} 
+                        InputProps={{
+                            endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                >
+                                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                </IconButton>
+                            </InputAdornment>
+                            )
+                        }}
+                    />   
+                    </Grid>
+                    </>
+                </Grid>
+                <Button type="submit" fullWidth="true" variant="contained" color="primary" className="classes.submit">Sign In</Button>
+            </form>
+            </Paper>
+            </Container>
         </ContentStyle>
       </Container>
     </RootStyle>
+    
   );
 };
 
