@@ -3,6 +3,7 @@ import { Paper, Typography, CircularProgress, Divider, Container, Grow, Grid, Ap
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getProject } from '../../actions/projects';
+import { getProjectTasks } from '../../actions/tasks';
 import ProjectTasks from './ProjectTasks/ProjectTasks';
 import FormTask from '../Form/FormTask';
 import useStyles from "./styles.js";
@@ -13,9 +14,14 @@ const ProjectDetails = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {id} = useParams();
+    
     useEffect(() => {
         dispatch(getProject(id));
     }, [dispatch, id]);
+
+    useEffect(() => {
+        dispatch(getProjectTasks());
+    }, [dispatch]);
 
     if(!project) return null;
 
@@ -36,7 +42,7 @@ const ProjectDetails = () => {
                 <Container>
                     <Grid container justify="space-between" alignItems="stretch" spacing="3">
                         <Grid item xs={12} sm={7}>
-                            <ProjectTasks />
+                            <ProjectTasks id={id}/>
                         </Grid>
                         <Grid item xs={12} sm={4}>
                             <FormTask id={id} />

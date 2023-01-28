@@ -1,12 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import ProjectTask from './ProjectTask/ProjectTask.js';
 
-const ProjectTasks = () => {
+const ProjectTasks = ({id}) => {
+    const projectTasks = useSelector((state) => state.tasks);
     return ( 
         <>
         <div>ProjectTasks</div>
-        <ProjectTask />
-        <ProjectTask />
+        <ProjectTask id={id} />
         </>
      );
 }

@@ -5,7 +5,6 @@ export const getProject = (id) => async (dispatch) => {
     try {
         dispatch({ type: START_LOADING });
         const { data } = await api.fetchProject(id);
-        console.log(data);
         dispatch({ type: FETCH_PROJECT, payload: data });
         dispatch({ type: END_LOADING });
     } catch (error) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProjectTask = () => {
+const ProjectTask = ({id}) => {
     return ( 
         <h1>PROJECTTASK</h1>
      );
