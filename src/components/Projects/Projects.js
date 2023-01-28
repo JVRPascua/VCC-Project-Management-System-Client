@@ -51,15 +51,15 @@ const Projects = () => {
                   <ProjectList setCurrentId={setCurrentId}/>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <AppBar className={classes.appBarSearch} position="static" color="inherit">
-                <TextField name="search" variant="outlined" label="Search Project" fullWidth onKeyUp={handleKeyPress} value={search} onChange={(e) => setSearch(e.target.value)}/>
-                <Button onClick={searchProject} className={classes.searchButton} variant="contained" color="primary">Search</Button>
-              </AppBar>
-              {(!searchQuery) && (
+            {(!searchQuery) && (
                 <Paper elevation={6} className={classes.pagination}>
                 <Pagination page={page} />
                 </Paper>
               )}
+              <AppBar className={classes.appBarSearch} position="static" color="inherit">
+                <TextField name="search" variant="outlined" label="Search Project" fullWidth onKeyUp={handleKeyPress} value={search} onChange={(e) => setSearch(e.target.value)}/>
+                <Button onClick={searchProject} className={classes.searchButton} variant="contained" color="primary">Search</Button>
+              </AppBar>
               <FormProject currentId={currentId} setCurrentId={setCurrentId}/>
             </Grid>
           </Grid>

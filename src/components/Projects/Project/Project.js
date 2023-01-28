@@ -25,7 +25,6 @@ const Project = ({project, setCurrentId}) => {
 
     return ( 
         <Card className={classes.card} elevation={6}>
-            <ButtonBase className={classes.cardAction} onClick={openProject}>
             <CardMedia className={classes.media} title={project.project_name}/>
             <div className={classes.overlay}>
                 <Typography variant="h6">Project {project.project_name }</Typography>
@@ -43,6 +42,7 @@ const Project = ({project, setCurrentId}) => {
                 </Button>
                 )}
             </div> 
+            <ButtonBase component="span" className={classes.cardAction} onClick={openProject}>
             <CardContent>
             <div className={classes.details}>
             <Typography variant="body2" color="textSecondary">Project Manager {project.project_manager-1}</Typography>

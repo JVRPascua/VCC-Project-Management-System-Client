@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-const FormTask = () => {
+const FormTask = ({id }) => {
     return ( 
-        <h1>FORM</h1>
+        <h1>FORMTASK</h1>
      );
 }
  

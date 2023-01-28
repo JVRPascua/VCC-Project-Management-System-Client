@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, FETCH_BY_SEARCH, START_LOADING, END_LOADING } from '../constants/actionTypes';
+import { FETCH_ALL, FETCH_PROJECT, CREATE, UPDATE, DELETE, FETCH_BY_SEARCH, START_LOADING, END_LOADING } from '../constants/actionTypes';
 
 export default (state  = { isLoading: true, projects: []}, action) => {
     switch (action.type) {
@@ -6,6 +6,7 @@ export default (state  = { isLoading: true, projects: []}, action) => {
             return { ...state, isLoading: true}
         case END_LOADING:
             return { ...state, isLoading: false}
+
         case FETCH_ALL:
             return {
                 ...state,
@@ -13,6 +14,8 @@ export default (state  = { isLoading: true, projects: []}, action) => {
                 currentPage: action.payload.currentPage,
                 numberOfPages: action.payload.numberOfPages
             };
+        case FETCH_PROJECT:
+            return { ...state, project: action.payload };
         case FETCH_BY_SEARCH:
             return { ...state, projects: action.payload };
         case CREATE:

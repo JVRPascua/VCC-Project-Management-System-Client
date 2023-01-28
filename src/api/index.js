@@ -10,12 +10,14 @@ API.interceptors.request.use((req) => {
     return req;
   });
 
-export const fetchProjects = (page) => API.get(`/projects?page=${page}`);
+export const fetchProject = (id) => API.get(`/projects/${id}`);
+export const fetchProjects = (page, userId) => API.get(`/projects?page=${page}&userId=${userId}`);
 export const fetchProjectsBySearch = (searchQuery) => API.get(`/projects/search?searchQuery=${searchQuery.search || 'none'}`);
 export const createProject = (newProject) => API.post('/projects', newProject);
 export const updateProject = (id, updatedProject) => API.patch(`/projects/${id}`, updatedProject);
 export const deleteProject = (id) => API.delete(`/projects/${id}`);
 
+export const fetchProjectTasks = () => API.get('/tasks');
+export const createProjectTasks = (newTask) => API.post('/tasks', newTask);
+
 export const signIn = (formData) => API.post('/auth/signin', formData);
-
-

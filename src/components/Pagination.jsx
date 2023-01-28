@@ -9,12 +9,14 @@ import useStyles from "./styles";
 
 const Paginate = ({page}) => {
     const { numberOfPages } = useSelector((state) => state.projects)
+    const user = JSON.parse(localStorage.getItem('profile'));
+    const userId = user?.result?.rows[0]?.users_id;
     const classes = useStyles();
     const dispatch = useDispatch();
     
     useEffect(() => {
-        if(page) dispatch(getProjects(page));
-    }, [dispatch, page]);
+        if(page) dispatch(getProjects(page, userId));
+    }, [dispatch, page, userId]);
 
     return (
         <Pagination 

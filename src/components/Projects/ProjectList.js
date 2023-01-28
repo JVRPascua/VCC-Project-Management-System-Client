@@ -10,6 +10,7 @@ const ProjectList = ({setCurrentId}) => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const userId = user?.result?.rows[0]?.users_id;
     const projectManagers = projects.map(x=>x.project_manager-1);
+    
     /*                {(userId === 1 ) && (|| projectManagers.includes(userId)                 )}*/
 
     if(!projects.length && !isLoading) return 'No Projects';
