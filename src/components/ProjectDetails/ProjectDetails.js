@@ -10,6 +10,7 @@ import useStyles from "./styles.js";
 
 const ProjectDetails = () => {
     const classes = useStyles();
+    const [currentId, setCurrentId] = useState(null);
     const { project, projects, isLoading } = useSelector((state) => state.projects);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -20,8 +21,8 @@ const ProjectDetails = () => {
     }, [dispatch, id]);
 
     useEffect(() => {
-        dispatch(getProjectTasks(id));
-    }, [dispatch, id]);
+        dispatch(getProjectTasks(id, currentId));
+    }, [dispatch, id, currentId]);
 
     if(!project) return null;
 
@@ -36,16 +37,16 @@ const ProjectDetails = () => {
     return ( 
         <Container maxWidth="lg">
             <AppBar className={classes.appBar} position="static" color="inherit">
-                <Typography className={classes.heading} variant="h4" align="left">Project {project[0].project_name} </Typography>
+                <Typography className={classes.heading} variant="h4" align="left">{project[0].project_name} </Typography>
             </AppBar>
             <Grow in>
                 <Container>
                     <Grid container justify="space-between" justifyContent="flex-end" alignItems="stretch" spacing={3} className={classes}>
                         <Grid item xs={12} sm={7}>
-                            <ProjectTasks id={id}/>
+                            <ProjectTasks id={id} setCurrentId={setCurrentId}/>
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                            <FormTask id={id} />
+                            <FormTask id={id} currentId={currentId} setCurrentId={setCurrentId}/>
                         </Grid>
                     </Grid>
                 </Container>

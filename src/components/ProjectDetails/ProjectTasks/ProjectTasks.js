@@ -5,7 +5,7 @@ import ProjectTask from './ProjectTask/ProjectTask.js';
 
 import useStyles from './styles';
 
-const ProjectTasks = () => {
+const ProjectTasks = ({ setCurrentId }) => {
     const projectTasks = useSelector((state) => state.tasks);
     const classes = useStyles();
 
@@ -14,7 +14,7 @@ const ProjectTasks = () => {
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
                 {projectTasks.map((task) => (
                     <Grid key={task.id} item xs={12} sm={6}>
-                        <ProjectTask task={task}/>
+                        <ProjectTask task={task} setCurrentId={setCurrentId}/>
                     </Grid>
                 ))}
             </Grid>

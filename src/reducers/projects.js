@@ -21,7 +21,7 @@ export default (state  = { isLoading: true, projects: []}, action) => {
         case CREATE:
             return { ...state, projects:[...state.projects, action.payload]};
         case UPDATE:
-            return { ...state, projects: state.projects.map((project) => project.projects_id === action.payload.projects_id ? action.payload : project)};
+            return { ...state, projects: state.projects.map((project) => project.projects_id === action.payload.projects_id ? action.payload : project) };
         case DELETE:
             return { ...state, projects: state.projects.filter((project) => project.projects_id !== action.payload)};
         default:

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, AppBar, Typography, Grow, Grid, Paper, TextField, Button } from "@mui/material";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { getProjectsBySearch } from "../../actions/projects";
+import { getProjectsBySearch} from "../../actions/projects";
 import FormProject from "../Form/FormProject.js";
 import ProjectList from "./ProjectList.js";
 import Pagination from "../Pagination";
@@ -53,7 +53,7 @@ const Projects = () => {
             <Grid item xs={12} sm={4}>
             {(!searchQuery) && (
                 <Paper elevation={6} className={classes.pagination}>
-                <Pagination page={page} />
+                <Pagination page={page} currentId={currentId}/>
                 </Paper>
               )}
               <AppBar className={classes.appBarSearch} position="static" color="inherit">

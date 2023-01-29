@@ -7,7 +7,7 @@ import { getProjects } from "../actions/projects";
 
 import useStyles from "./styles";
 
-const Paginate = ({page}) => {
+const Paginate = ({page, currentId}) => {
     const { numberOfPages } = useSelector((state) => state.projects)
     const user = JSON.parse(localStorage.getItem('profile'));
     const userId = user?.result?.rows[0]?.users_id;
@@ -15,8 +15,8 @@ const Paginate = ({page}) => {
     const dispatch = useDispatch();
     
     useEffect(() => {
-        if(page) dispatch(getProjects(page, userId));
-    }, [dispatch, page, userId]);
+        if(page) dispatch(getProjects(page, userId, currentId));
+    }, [dispatch, page, userId, currentId]);
 
     return (
         <Pagination 

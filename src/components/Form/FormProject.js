@@ -10,7 +10,7 @@ const FormProject = ({ currentId, setCurrentId }) => {
     description: '', project_manager: '' });
     const classes = useStyles();
     const dispatch = useDispatch();
-    const project = useSelector((state) => currentId ? state.projects.find((p) => p.projects_id === currentId) : null);
+    const project = useSelector((state) => currentId ? state.projects.projects.find((p) => p.projects_id === currentId) : null);
     const user = JSON.parse(localStorage.getItem('profile'));
     const userId = user?.result?.rows[0]?.users_id;
 

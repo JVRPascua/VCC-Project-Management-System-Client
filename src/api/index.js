@@ -19,5 +19,7 @@ export const deleteProject = (id) => API.delete(`/projects/${id}`);
 
 export const fetchProjectTasks = (id) => API.get(`/tasks/${id}`);
 export const createTask = (newTask) => API.post('/tasks', newTask);
+export const updateTask = (id, updatedTask) => API.patch(`/tasks/${id}`, updatedTask);
+export const deleteTask = (id) => API.delete(`/tasks/${id}`);
 
 export const signIn = (formData) => API.post('/auth/signin', formData);
