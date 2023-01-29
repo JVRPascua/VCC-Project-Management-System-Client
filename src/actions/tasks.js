@@ -1,9 +1,9 @@
 import * as api from '../api';
 
-export const getProjectTasks = () => async (dispatch) => {
+export const getProjectTasks = (id) => async (dispatch) => {
 
     try {
-        const { data } = await api.fetchProjectTasks();
+        const { data } = await api.fetchProjectTasks(id);
         dispatch({ type: 'FETCH_PROJECT_TASKS', payload: data});
     } catch (error) {
         console.log(error);

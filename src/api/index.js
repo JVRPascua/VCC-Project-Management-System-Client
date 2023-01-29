@@ -17,7 +17,7 @@ export const createProject = (newProject) => API.post('/projects', newProject);
 export const updateProject = (id, updatedProject) => API.patch(`/projects/${id}`, updatedProject);
 export const deleteProject = (id) => API.delete(`/projects/${id}`);
 
-export const fetchProjectTasks = () => API.get('/tasks');
+export const fetchProjectTasks = (id) => API.get(`/tasks/${id}`);
 export const createTask = (newTask) => API.post('/tasks', newTask);
 
 export const signIn = (formData) => API.post('/auth/signin', formData);

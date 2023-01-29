@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Paper, Typography, CircularProgress, Divider, Container, Grow, Grid, AppBar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from 'react-router-dom';
@@ -20,8 +20,8 @@ const ProjectDetails = () => {
     }, [dispatch, id]);
 
     useEffect(() => {
-        dispatch(getProjectTasks());
-    }, [dispatch]);
+        dispatch(getProjectTasks(id));
+    }, [dispatch, id]);
 
     if(!project) return null;
 
@@ -40,7 +40,7 @@ const ProjectDetails = () => {
             </AppBar>
             <Grow in>
                 <Container>
-                    <Grid container justify="space-between" alignItems="stretch" spacing="3">
+                    <Grid container justify="space-between" justifyContent="flex-end" alignItems="stretch" spacing={3} className={classes}>
                         <Grid item xs={12} sm={7}>
                             <ProjectTasks id={id}/>
                         </Grid>
