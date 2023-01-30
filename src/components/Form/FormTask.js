@@ -36,7 +36,7 @@ const FormTask = ({ id, currentId, setCurrentId }) => {
     return ( 
         <Paper className={classes.paper} elevation={6}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-            <Typography variant="h6">{currentId ? 'Editing' : 'Add'} a Task</Typography>
+            <Typography variant="h6">{currentId ? 'Edit' : 'Add'} Task</Typography>
             <TextField required name="task_name" variant="outlined" label="Task Name" fullWidth="true" 
             value={taskData.task_name} onChange={(e) => setTaskData({ ...taskData, task_name: e.target.value })}/>
             <TextField required name="start_date" variant="outlined" label="Start Date" InputLabelProps={{ shrink: true, required: true }} type="date" fullwidth="true" value={taskData.start_date} onChange={(e) => setTaskData({ ...taskData, start_date: e.target.value })}/>

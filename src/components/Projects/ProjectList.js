@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Project from "./Project/Project.js";
 import useStyles from './stylesprojectlist';
 
-const ProjectList = ({setCurrentId}) => {
+const ProjectList = ({setCurrentId, currentId}) => {
     const {projects, isLoading} = useSelector((state) => state.projects);
     const classes = useStyles();
 
@@ -17,7 +17,7 @@ const ProjectList = ({setCurrentId}) => {
                     <Grid className={classes.container} container alignItems="stretch" spacing={3}>
                         {projects.map((project) => (
                         <Grid item key={project._id} xs={12} sm={6}> 
-                        <Project project={project} setCurrentId={setCurrentId}/>
+                        <Project project={project} currentId={currentId} setCurrentId={setCurrentId}/>
                     </Grid>
                 ))}
             </Grid>

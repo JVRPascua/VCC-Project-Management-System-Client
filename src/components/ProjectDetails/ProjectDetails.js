@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Paper, Typography, CircularProgress, Divider, Container, Grow, Grid, AppBar } from '@mui/material';
+import { Paper, Typography, CircularProgress, Divider, Container, Grow, Grid, AppBar, Button, Modal, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getProject } from '../../actions/projects';
@@ -15,6 +15,9 @@ const ProjectDetails = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {id} = useParams();
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     
     useEffect(() => {
         dispatch(getProject(id));
@@ -41,12 +44,19 @@ const ProjectDetails = () => {
             </AppBar>
             <Grow in>
                 <Container>
-                    <Grid container justify="space-between" justifyContent="flex-end" alignItems="stretch" spacing={3} className={classes}>
-                        <Grid item xs={12} sm={7}>
-                            <ProjectTasks id={id} setCurrentId={setCurrentId}/>
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <FormTask id={id} currentId={currentId} setCurrentId={setCurrentId}/>
+                    <Grid container justify="space-between" margin='15px 25px 0px 50px' alignItems="stretch" spacing={3} className={classes}>
+                    <>
+                    <Button onClick={handleOpen} className={classes.searchButton} variant="contained" color="primary">Add Task</Button>
+                    <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                    <Box className={classes.box}>
+                      <FormTask />
+                    </Box>
+                    </Modal>
+                    </>
+                    </Grid>
+                    <Grid container justify="space-between" justifyContent="center" alignItems="stretch" spacing={3} className={classes}>
+                        <Grid item xs={12} sm={15}>
+                            <ProjectTasks id={id} currentId={currentId} setCurrentId={setCurrentId}/>
                         </Grid>
                     </Grid>
                 </Container>

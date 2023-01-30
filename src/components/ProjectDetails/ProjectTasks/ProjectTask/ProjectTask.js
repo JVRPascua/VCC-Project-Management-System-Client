@@ -1,20 +1,24 @@
-import React from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography, ButtonBase } from '@mui/material';
+import React, {useState} from 'react';
+import { Card, CardActions, CardContent, CardMedia, Button, Typography, ButtonBase, Modal, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useDispatch } from 'react-redux';
 import { deleteTask } from '../../../../actions/tasks';
+import FormTask from '../../../Form/FormTask';
 
 import useStyles from './styles';
 
-const ProjectTask = ({id, task, setCurrentId}) => {
+const ProjectTask = ({id, task, setCurrentId, currentId}) => {
     const classes = useStyles();
-
     const dispatch = useDispatch();
+    const today = new Date();
     const createdAt = new Date(task.start_date);
     const startDate = createdAt.toLocaleDateString('en-US');
     const endAt = new Date(task.end_date);
     const endDate = endAt.toLocaleDateString('en-US');
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     return ( 
         <Card className={classes.card} elevation={6}>
@@ -29,9 +33,16 @@ const ProjectTask = ({id, task, setCurrentId}) => {
                 </div>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{color: 'white'}} size="small" onClick={() => setCurrentId(task.tasks_id)}>
-                    <MoreHorizIcon fontSize="default" />
-                </Button>
+            <>
+            <Button style={{color: 'white'}} size="small" onClick={() => { setCurrentId(task.tasks_id); handleOpen(); }}>
+                <MoreHorizIcon fontSize="default" />
+            </Button>
+            <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+                <Box className={classes.box}>
+                    <FormTask currentId={currentId} setCurrentId={setCurrentId}/>
+                </Box>
+            </Modal>
+            </>
             </div> 
             <ButtonBase component="span" className={classes.cardAction} >
             <CardContent>
