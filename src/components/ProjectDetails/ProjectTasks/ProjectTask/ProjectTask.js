@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography, ButtonBase, Modal, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -11,6 +12,7 @@ import useStyles from './styles';
 const ProjectTask = ({id, task, setCurrentId, currentId}) => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const today = new Date();
     const createdAt = new Date(task.start_date);
     const startDate = createdAt.toLocaleDateString('en-US');
@@ -19,17 +21,19 @@ const ProjectTask = ({id, task, setCurrentId, currentId}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    
+    const openTask = () => navigate(`/tasks/${task.tasks_id}`);
 
     return ( 
         <Card className={classes.card} elevation={6}>
             <CardMedia className={classes.media} title={task.project_name}/>
             <div className={classes.overlay}>
-                <Typography variant="h6"> {task.task_name }</Typography>
+                <Typography align="left" variant="h6"> {task.task_name }</Typography>
                 <div>
-                <Typography variant="body">Start: {startDate}</Typography>
+                <Typography align="left" variant="body">Start: {startDate}</Typography>
                 </div>
                 <div>
-                <Typography variant="body">Deadline: {endDate} </Typography>
+                <Typography align="left" variant="body">Deadline: {endDate} </Typography>
                 </div>
             </div>
             <div className={classes.overlay2}>
@@ -44,10 +48,10 @@ const ProjectTask = ({id, task, setCurrentId, currentId}) => {
             </Modal>
             </>
             </div> 
-            <ButtonBase component="span" className={classes.cardAction} >
+            <ButtonBase component="span" className={classes.cardActions} onClick={openTask}>
             <CardContent>
             <div className={classes.details}>
-            <Typography variant="body2" color="textSecondary">Description: {task.description}</Typography>
+            <Typography variant="body2"  color="textSecondary">Description: {task.description}</Typography>
             </div>
             </CardContent> 
             </ButtonBase>

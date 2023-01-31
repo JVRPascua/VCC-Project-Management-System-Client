@@ -53,7 +53,7 @@ const Project = ({project, setCurrentId, currentId}) => {
                 </>
                 )}
             </div> 
-                        <ButtonBase component="span" className={classes.cardAction} onClick={openProject}>
+                        <ButtonBase component="span" className={classes.cardActions} onClick={openProject}>
             <CardContent>
             <div className={classes.details}>
             <Typography variant="body2" color="textSecondary">Project Manager {project.project_manager-1}</Typography>

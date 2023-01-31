@@ -18,6 +18,7 @@ export const updateProject = (id, updatedProject) => API.patch(`/projects/${id}`
 export const deleteProject = (id) => API.delete(`/projects/${id}`);
 
 export const fetchProjectTasks = (id) => API.get(`/tasks/${id}`);
+export const fetchTask = (id) => API.get(`/tasks/task/${id}`);
 export const createTask = (newTask) => API.post('/tasks', newTask);
 export const updateTask = (id, updatedTask) => API.patch(`/tasks/${id}`, updatedTask);
 export const deleteTask = (id) => API.delete(`/tasks/${id}`);

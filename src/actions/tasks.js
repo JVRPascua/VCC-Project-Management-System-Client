@@ -10,6 +10,16 @@ export const getProjectTasks = (id) => async (dispatch) => {
     }
 }
 
+export const getTask = (id) => async (dispatch) => {
+
+    try {
+        const { data } = await api.fetchTask(id);
+        dispatch({ type: 'FETCH_TASK', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const createTask = (task) => async (dispatch) => {
 
     try {

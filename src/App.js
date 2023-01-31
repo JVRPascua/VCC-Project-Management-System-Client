@@ -7,6 +7,7 @@ import Tasks from "./components/Tasks/Tasks";
 import ActivityLog from "./components/ActivityLog/ActivityLog";
 import LoginPage from "./components/LoginPage/LoginPage";
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
+import TaskDetails from './components/TaskDetails/TaskDetails';
 import Sidebar from "./components/Sidebar/Sidebar";
 import { red, grey } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -44,6 +45,7 @@ function App() {
           <Route path="/activitylog" element= { <ActivityLog /> } />
           <Route path="/projects/search" element= {<Projects /> } />
           <Route path="/projects/:id" element= { <ProjectDetails /> } />
+          <Route path="/tasks/:id" element= { <TaskDetails /> } />
         </Routes>
     </div>
     </ThemeProvider>

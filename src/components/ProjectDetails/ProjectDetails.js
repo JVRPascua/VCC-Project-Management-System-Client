@@ -44,7 +44,7 @@ const ProjectDetails = () => {
             </AppBar>
             <Grow in>
                 <Container>
-                    <Grid container justify="space-between" margin='15px 25px 0px 50px' alignItems="stretch" spacing={3} className={classes}>
+                    <Grid container justify="space-between" margin='15px 25px 10px 15px' justifyContent="flex-end" alignItems="stretch" spacing={3} className={classes}>
                     <>
                     <Button onClick={handleOpen} className={classes.searchButton} variant="contained" color="primary">Add Task</Button>
                     <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
