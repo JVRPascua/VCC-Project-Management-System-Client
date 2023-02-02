@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { TextField, Button, Typography, Paper} from "@mui/material"
+import { TextField, Button, Typography, Paper, Autocomplete} from "@mui/material"
 import { useDispatch, useSelector } from 'react-redux';
 import {createTask, updateTask} from '../../actions/tasks';
 
 import useStyles from './styles';
 
 const FormTask = ({ id, currentId, setCurrentId }) => {
-    const [taskData, setTaskData] = useState({ task_name: '', start_date: '', end_date: '', description: '', project: id});
+    const [taskData, setTaskData] = useState({ task_name: '', start_date: '', end_date: '', description: '', priority: '', project: id});
     const task = useSelector((state) => currentId ? state.tasks.find((t) => t.tasks_id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -29,9 +29,27 @@ const FormTask = ({ id, currentId, setCurrentId }) => {
     }
 
     const clear = () => {
-      setCurrentId(null);
-      setTaskData({ task_name: '', start_date: '', end_date: '', description: '', project: id});
+      setTaskData({ task_name: '', start_date: '', end_date: '', description: '', priority: '', project: id});
     }
+
+    const priority = [
+      {
+        label: "Critical",
+        value: 1,
+      },
+      {
+        label: "High",
+        value: 2,
+      },
+      {
+        label: "Medium",
+        value: 3,
+      },
+      {
+      label: "Low",
+          value: 4,
+      },
+    ]
 
     return ( 
         <Paper className={classes.paper} elevation={6}>
@@ -43,6 +61,7 @@ const FormTask = ({ id, currentId, setCurrentId }) => {
             <TextField required name="end_date" variant="outlined" label="Deadline" InputLabelProps={{ shrink: true, required: true }} type="date" fullwidth="true" value={taskData.end_date} onChange={(e) => setTaskData({ ...taskData, end_date: e.target.value })}/>
             <TextField required name="description" variant="outlined" label="Description" 
             fullWidth="true" value={taskData.description} onChange={(e) => setTaskData({ ...taskData, description: e.target.value })}/>
+            <Autocomplete required options={priority} sx={{ width: 380 }} isOptionEqualToValue={(option) => option.label} onChange={(event, newValue) => {setTaskData({ ...taskData, priority: newValue.value });}} renderInput={(params) => (<TextField {...params} placeholder="Priority Level" />)}/>
             <Button className={classes.buttonSubmit} color="primary" size="large" type="submit" fullWidth="true">Submit</Button>
             <Button color="secondary" size="small" onClick={clear} fullWidth="true">Clear</Button>
             </form>

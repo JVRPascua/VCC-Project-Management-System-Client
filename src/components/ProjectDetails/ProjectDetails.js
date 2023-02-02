@@ -11,7 +11,7 @@ import useStyles from "./styles.js";
 const ProjectDetails = () => {
     const classes = useStyles();
     const [currentId, setCurrentId] = useState(null);
-    const { project, projects, isLoading } = useSelector((state) => state.projects);
+    const { project, projects, isLoading } = useSelector((state) => state?.projects);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {id} = useParams();
@@ -40,7 +40,7 @@ const ProjectDetails = () => {
     return ( 
         <Container maxWidth="lg">
             <AppBar className={classes.appBar} position="static" color="inherit">
-                <Typography className={classes.heading} variant="h4" align="left">{project[0].project_name} </Typography>
+                <Typography className={classes.heading} variant="h4" align="left">{project[0]?.project_name} </Typography>
             </AppBar>
             <Grow in>
                 <Container>
@@ -49,7 +49,7 @@ const ProjectDetails = () => {
                     <Button onClick={handleOpen} className={classes.searchButton} variant="contained" color="primary">Add Task</Button>
                     <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                     <Box className={classes.box}>
-                      <FormTask />
+                      <FormTask id={id}/>
                     </Box>
                     </Modal>
                     </>

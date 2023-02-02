@@ -47,7 +47,7 @@ const Project = ({project, setCurrentId, currentId}) => {
                     </Button>
                     <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                         <Box className={classes.box}>
-                            <FormProject currentId={currentId} setCurrentId={setCurrentId}/>
+                            <FormProject currentId={currentId} setCurrentId={setCurrentId} handleClose={handleClose}/>
                         </Box>
                     </Modal>
                 </>

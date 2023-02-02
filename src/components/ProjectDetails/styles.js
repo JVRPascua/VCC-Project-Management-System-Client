@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 export default makeStyles((theme) => ({
       appBar: {
         borderRadius: 10,
-        margin: '5px 49px ',
+        margin: '5px 58px ',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
       },
       heading: {
         color: '#CD0E0E',
-        fontFamily: 'sans-serif',
+        fontFamily: 'rockwell',
         fontWeight: 600,
         fontSize: 30
       },

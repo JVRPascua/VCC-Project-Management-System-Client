@@ -19,7 +19,7 @@ export default makeStyles(() => ({
     },
     heading: {
       color: '#CD0E0E',
-      fontFamily: 'sans-serif',
+      fontFamily: 'rockwell',
       fontWeight: 600,
       fontSize: 30
     },

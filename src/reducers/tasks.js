@@ -2,8 +2,6 @@ export default (tasks = [], action) => {
     switch (action.type) {
         case 'FETCH_PROJECT_TASKS':
             return action.payload;
-        case 'FETCH_TASK':
-            return {task: action.payload};
         case 'CREATE_TASK':
             return [...tasks, action.payload];
         case 'UPDATE_TASK':
