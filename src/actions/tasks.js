@@ -1,7 +1,6 @@
 import * as api from '../api';
 
 export const getProjectTasks = (id) => async (dispatch) => {
-
     try {
         const { data } = await api.fetchProjectTasks(id);
         dispatch({ type: 'FETCH_PROJECT_TASKS', payload: data});
@@ -11,7 +10,6 @@ export const getProjectTasks = (id) => async (dispatch) => {
 }
 
 export const getTask = (id) => async (dispatch) => {
-
     try {
         const { data } = await api.fetchTask(id);
         dispatch({ type: 'FETCH_TASK', payload: data});
@@ -21,7 +19,6 @@ export const getTask = (id) => async (dispatch) => {
 }
 
 export const createTask = (task) => async (dispatch) => {
-
     try {
         const { data } = await api.createTask(task);
         dispatch({ type: 'CREATE_TASK', payload: data});

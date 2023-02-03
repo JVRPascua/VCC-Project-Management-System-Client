@@ -23,4 +23,7 @@ export const createTask = (newTask) => API.post('/tasks', newTask);
 export const updateTask = (id, updatedTask) => API.patch(`/tasks/${id}`, updatedTask);
 export const deleteTask = (id) => API.delete(`/tasks/${id}`);
 
+export const comment = (value, id, userId) => API.post(`/comments/${id}?userId=${userId}`, {value});
+export const fetchTaskComments = (id) => API.get(`/comments/${id}`);
+
 export const signIn = (formData) => API.post('/auth/signin', formData);
