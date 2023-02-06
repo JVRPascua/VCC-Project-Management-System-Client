@@ -1,5 +1,14 @@
 import * as api from '../api';
 
+export const getTasks = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchTasks(id);
+        dispatch({ type: 'FETCH_TASKS', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const getProjectTasks = (id) => async (dispatch) => {
     try {
         const { data } = await api.fetchProjectTasks(id);
@@ -44,5 +53,15 @@ export const deleteTask = (id) => async (dispatch) => {
         dispatch({type: 'DELETE_TASK', payload: id});
     } catch (error) {
         console.log(error);
+    }
+}
+
+export const taskDone = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.doneTask(id);
+
+        dispatch({ type: 'TASK_DONE', payload: data });
+    } catch (error) {
+        console.log(error)
     }
 }

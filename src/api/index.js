@@ -19,11 +19,13 @@ export const deleteProject = (id) => API.delete(`/projects/${id}`);
 
 export const fetchProjectTasks = (id) => API.get(`/tasks/${id}`);
 export const fetchTask = (id) => API.get(`/tasks/task/${id}`);
+export const fetchTasks = (id) => API.get(`tasks/alltasks/${id}`);
 export const createTask = (newTask) => API.post('/tasks', newTask);
 export const updateTask = (id, updatedTask) => API.patch(`/tasks/${id}`, updatedTask);
+export const doneTask = (id) => API.patch(`/tasks/task/${id}`);
 export const deleteTask = (id) => API.delete(`/tasks/${id}`);
 
-export const comment = (value, id, userId) => API.post(`/comments/${id}?userId=${userId}`, {value});
+export const comment = (value, id, userId, projectId) => API.post(`/comments/${id}?userId=${userId}&projectId=${projectId}`, {value});
 export const fetchTaskComments = (id) => API.get(`/comments/${id}`);
 
 export const signIn = (formData) => API.post('/auth/signin', formData);

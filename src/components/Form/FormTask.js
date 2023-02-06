@@ -2,16 +2,18 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper, Autocomplete} from "@mui/material"
 import { useDispatch, useSelector } from 'react-redux';
 import {createTask, updateTask} from '../../actions/tasks';
+import { useParams } from 'react-router-dom';
 
 import useStyles from './styles';
 
-const FormTask = ({ id, currentId, setCurrentId }) => {
-    const [taskData, setTaskData] = useState({ task_name: '', start_date: '', end_date: '', description: '', priority: '', project: id});
+const FormTask = ({ id, currentId, projectManager }) => {
+    const [taskData, setTaskData] = useState({ task_name: '', start_date: '', end_date: '', description: '', priority: '', project: id, projectManager: projectManager});
     const task = useSelector((state) => currentId ? state.tasks.find((t) => t.tasks_id === currentId) : null);
     const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
     const userId = user?.result?.rows[0]?.users_id;
+    
 
     useEffect(() => {
       if(task) setTaskData(task);
@@ -22,8 +24,10 @@ const FormTask = ({ id, currentId, setCurrentId }) => {
       
       if(currentId){
         dispatch(updateTask(currentId, taskData))
+        window.location.reload();
       } else {
         dispatch(createTask(taskData))
+        window.location.reload();
       }
       clear();
     }

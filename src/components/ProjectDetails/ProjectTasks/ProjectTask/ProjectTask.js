@@ -11,7 +11,7 @@ import FormTask from '../../../Form/FormTask';
 import useStyles from './styles';
 import tasks from '../../../../reducers/tasks';
 
-const ProjectTask = ({id, task, setCurrentId, currentId}) => {
+const ProjectTask = ({id, task, setCurrentId, currentId, project}) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();

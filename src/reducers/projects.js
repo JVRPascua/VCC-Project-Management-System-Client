@@ -14,8 +14,6 @@ export default (state  = { isLoading: true, projects: []}, action) => {
                 currentPage: action.payload.currentPage,
                 numberOfPages: action.payload.numberOfPages
             };
-        case FETCH_PROJECT:
-            return { ...state, project: action.payload };
         case FETCH_BY_SEARCH:
             return { ...state, projects: action.payload };
         case CREATE:

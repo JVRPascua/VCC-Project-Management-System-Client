@@ -49,10 +49,10 @@ const Login = () => {
             <form className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Grid container spacing={1}>
                     <>
-                    <Grid xs={6} md={12}>
+                    <Grid xs={10} md={12}>
                         <TextField name="username" label="Enter Username" variant="outlined" required fullWidth="true" onChange={handleChange} type="text" autoFocus xs={6}/>
                     </Grid>
-                    <Grid xs={6} md={12}>
+                    <Grid xs={10} md={12}>
                     <TextField name="password" label='Enter Password' variant="outlined" fullWidth="true" required type={showPassword ? "text" : "password"} onChange={handleChange} 
                         InputProps={{
                             endAdornment: (

@@ -18,6 +18,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import TaskIcon from '@mui/icons-material/Task';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import vcclogo from '../../images/vcclogo.jpg';
 const drawerWidth = 240;
 
@@ -59,10 +60,20 @@ const drawerWidth = 240;
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
+  let currentUser = {
+    1: "General Manager",
+    2: "Project Manager 1",
+    3: "Project Manager 2",
+    4: "Project Manager 3",
+    5: "Project Manager 4",
+    6: "Project Manager 5",
+}
+  let userId = user?.result?.rows[0]?.users_id;
   const drawer = (
     
     <div>
       <Toolbar><img src={vcclogo} alt="vcclogo" height="70px" width="150px" /></Toolbar>
+      <Toolbar><AccountBoxIcon/>&nbsp;<strong>{currentUser[userId]}</strong></Toolbar>
       <List>
           <ListItem disablePadding>
             <ListItemButton component={Link} to="/">

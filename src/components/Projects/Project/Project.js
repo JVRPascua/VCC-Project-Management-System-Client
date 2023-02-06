@@ -31,7 +31,7 @@ const Project = ({project, setCurrentId, currentId}) => {
         <Card className={classes.card} elevation={6}>
             <CardMedia className={classes.media} title={project.project_name}/>
             <div className={classes.overlay}>
-                <Typography variant="h6">Project {project.project_name }</Typography>
+                <Typography variant="h6">{project.project_name }</Typography>
                 <div>
                 <Typography variant="body">Project Start: {startDate}</Typography>
                 </div>

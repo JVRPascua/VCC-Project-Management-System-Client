@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom"
 import Dashboard from "./components/Dashboard/Dashboard";
 import Projects from "./components/Projects/Projects";
@@ -9,7 +9,7 @@ import LoginPage from "./components/LoginPage/LoginPage";
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 import TaskDetails from './components/TaskDetails/TaskDetails';
 import Sidebar from "./components/Sidebar/Sidebar";
-import { red, grey } from '@mui/material/colors';
+import { red, grey, indigo } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -18,7 +18,7 @@ const theme = createTheme({
       main: red[600],
     },
     secondary: {
-      main: grey[700],
+      main: indigo[600],
     }
   },
 });
@@ -26,9 +26,8 @@ const theme = createTheme({
 function App() {
 
   const location = useLocation();
-  const user = JSON.parse(localStorage.getItem('profile'));
 
-  
+  const isLoggedIn = localStorage.getItem('profile');
 
   return (
     <ThemeProvider theme={theme}>
@@ -38,14 +37,14 @@ function App() {
       <Sidebar/>:null
     }
         <Routes>
-          <Route path="/loginpage" element= {!user ? <LoginPage /> : <Navigate to="/" />} />
-          <Route path="/" element= { <Dashboard /> } />
-          <Route path="/projects" element= { <Projects /> } />
-          <Route path="/tasks" element= { <Tasks /> } />
-          <Route path="/activitylog" element= { <ActivityLog /> } />
-          <Route path="/projects/search" element= {<Projects /> } />
-          <Route path="/projects/:id" element= { <ProjectDetails /> } />
-          <Route path="/tasks/:id" element= { <TaskDetails /> } />
+          <Route path="/loginpage" element= {<LoginPage/>} />
+          <Route path="/" element= {isLoggedIn ? <Dashboard /> : <Navigate to="/loginpage" />} />
+          <Route path="/projects" element= {isLoggedIn ?  <Projects /> : <Navigate to="/loginpage" />} />
+          <Route path="/tasks" element= {isLoggedIn ?  <Tasks /> : <Navigate to="/loginpage" />} />
+          <Route path="/activitylog" element= {isLoggedIn ?  <ActivityLog /> : <Navigate to="/loginpage" />} />
+          <Route path="/projects/search" element= {isLoggedIn ? <Projects /> : <Navigate to="/loginpage" />} />
+          <Route path="/projects/:id" element= {isLoggedIn ?  <ProjectDetails /> : <Navigate to="/loginpage" />} />
+          <Route path="/tasks/:id" element= {isLoggedIn ?  <TaskDetails /> : <Navigate to="/loginpage" />} />
         </Routes>
     </div>
     </ThemeProvider>

@@ -47,9 +47,9 @@ const Projects = () => {
 
     return ( 
       <Container maxwidth="lg">
-      <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h4" align="left">Projects</Typography>
-      </AppBar>
+        <Paper className={classes.heading} elevation={6}>
+          Projects
+        </Paper>
       <Grow in>
         <Container maxWidth="xl">
           <Grid container justify="space-between" justifyContent="flex-end" alignItems="stretch" spacing={3} className={classes}>
