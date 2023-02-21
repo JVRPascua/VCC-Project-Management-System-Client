@@ -14,6 +14,7 @@ const initialState = { username: '', password: '' };
 
 const Login = () => {
 
+
     const classes = useStyles();
 
     const dispatch = useDispatch();
@@ -45,7 +46,6 @@ const Login = () => {
           </HeadingStyle>
           <Container component="main" maxWidth="xs">
             <Paper className={classes.paper} elevation={3}>
-            <Typography variant="h6">Sign In</Typography>
             <form className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Grid container spacing={1}>
                     <>

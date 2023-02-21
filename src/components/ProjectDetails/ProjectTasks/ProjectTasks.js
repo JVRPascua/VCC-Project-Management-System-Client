@@ -53,7 +53,7 @@ const ProjectTasks = ({ setCurrentId, currentId, project }) => {
             </Grid>
             <Grid key={2} item>
             <Paper className={classes.heading} elevation={6}>
-            {projectTasksActive.length} Active Tasks
+                {projectTasksActive.length} Active Tasks
             </Paper>
               <Paper className={classes.paper} elevation={6} sx={{ overflowY: "scroll"}}>
               {projectTasksActive?.map((task) => (

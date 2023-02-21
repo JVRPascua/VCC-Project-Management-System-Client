@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom"
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -15,18 +14,27 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: red[600],
+      main: "#EA0500",
     },
     secondary: {
       main: indigo[600],
-    }
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: "#FFFFFF",
+          backgroundImage: `linear-gradient(180deg, #FFFFFF  30%, #FF1913 100%)`,
+        },
+      },
+    },
   },
 });
 
 function App() {
 
   const location = useLocation();
-
   const isLoggedIn = localStorage.getItem('profile');
 
   return (

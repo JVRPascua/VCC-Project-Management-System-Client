@@ -16,417 +16,246 @@ const Dashboard = () => {
     dispatch(getTasks(userId));
   }, [dispatch, userId]);
 
-  const tasksProjectManager1 = tasks?.filter(task=>{
-    const tpm1 = task.project_manager === 2;
-        return tpm1;
-    });
-  const tasksProjectManager1Backlogs = tasksProjectManager1?.filter(task=>{        
-    const date = new Date(task.end_date)
-    const timestamp = date.getTime()
-      return timestamp < Date.now()
-    });
-  const tasksProjectManager1BacklogsCritical = tasksProjectManager1Backlogs?.filter(task=>{        
-    const tpm1bc = task.priority === 1;
-      return tpm1bc;
-    });
-  const tasksProjectManager1BacklogsHigh = tasksProjectManager1Backlogs?.filter(task=>{        
-    const tpm1bc = task.priority === 2;
-      return tpm1bc;
-    });
-  const tasksProjectManager1BacklogsMedium = tasksProjectManager1Backlogs?.filter(task=>{        
-    const tpm1bc = task.priority === 3;
-      return tpm1bc;
-    });
-  const tasksProjectManager1BacklogsLow = tasksProjectManager1Backlogs?.filter(task=>{        
-    const tpm1bc = task.priority === 4;
-      return tpm1bc;
-    });
-  const tasksProjectManager1Active = tasksProjectManager1?.filter(task=>{        
-    const date = new Date(task.end_date)
-    const timestamp = date.getTime()
-      return timestamp > Date.now()
-    });
-  const tasksProjectManager1ActiveCritical = tasksProjectManager1Active?.filter(task=>{        
-      const tpm1bc = task.priority === 1;
-        return tpm1bc;
-      });
-  const tasksProjectManager1ActiveHigh = tasksProjectManager1Active?.filter(task=>{        
-      const tpm1bc = task.priority === 2;
-        return tpm1bc;
-      });
-  const tasksProjectManager1ActiveMedium = tasksProjectManager1Active?.filter(task=>{        
-      const tpm1bc = task.priority === 3;
-        return tpm1bc;
-      });
-  const tasksProjectManager1ActiveLow = tasksProjectManager1Active?.filter(task=>{        
-      const tpm1bc = task.priority === 4;
-        return tpm1bc;
-      });
-  const tasksProjectManager2 = tasks?.filter(task=>{
-        const tpm1 = task.project_manager === 3;
-            return tpm1;
-        });
-  const tasksProjectManager2Backlogs = tasksProjectManager2?.filter(task=>{        
-        const date = new Date(task.end_date)
-        const timestamp = date.getTime()
-          return timestamp < Date.now()
-        });
-  const tasksProjectManager2BacklogsCritical = tasksProjectManager2Backlogs?.filter(task=>{        
-        const tpm1bc = task.priority === 1;
-          return tpm1bc;
-        });
-  const tasksProjectManager2BacklogsHigh = tasksProjectManager2Backlogs?.filter(task=>{        
-        const tpm1bc = task.priority === 2;
-          return tpm1bc;
-        });
-  const tasksProjectManager2BacklogsMedium = tasksProjectManager2Backlogs?.filter(task=>{        
-        const tpm1bc = task.priority === 3;
-          return tpm1bc;
-        });
-  const tasksProjectManager2BacklogsLow = tasksProjectManager2Backlogs?.filter(task=>{        
-        const tpm1bc = task.priority === 4;
-          return tpm1bc;
-        });
-  const tasksProjectManager2Active = tasksProjectManager2?.filter(task=>{        
-        const date = new Date(task.end_date)
-        const timestamp = date.getTime()
-          return timestamp > Date.now()
-        });
-  const tasksProjectManager2ActiveCritical = tasksProjectManager2Active?.filter(task=>{        
-          const tpm1bc = task.priority === 1;
-            return tpm1bc;
-          });
-  const tasksProjectManager2ActiveHigh = tasksProjectManager2Active?.filter(task=>{        
-          const tpm1bc = task.priority === 2;
-            return tpm1bc;
-          });
-  const tasksProjectManager2ActiveMedium = tasksProjectManager2Active?.filter(task=>{        
-          const tpm1bc = task.priority === 3;
-            return tpm1bc;
-          });
-  const tasksProjectManager2ActiveLow = tasksProjectManager2Active?.filter(task=>{        
-          const tpm1bc = task.priority === 4;
-            return tpm1bc;
-          });
-  const tasksProjectManager3 = tasks?.filter(task=>{
-            const tpm1 = task.project_manager === 4;
-                return tpm1;
-            });
-  const tasksProjectManager3Backlogs = tasksProjectManager3?.filter(task=>{        
-            const date = new Date(task.end_date)
-            const timestamp = date.getTime()
-              return timestamp < Date.now()
-            });
-  const tasksProjectManager3BacklogsCritical = tasksProjectManager3Backlogs?.filter(task=>{        
-            const tpm1bc = task.priority === 1;
-              return tpm1bc;
-            });
-  const tasksProjectManager3BacklogsHigh = tasksProjectManager3Backlogs?.filter(task=>{        
-            const tpm1bc = task.priority === 2;
-              return tpm1bc;
-            });
-  const tasksProjectManager3BacklogsMedium = tasksProjectManager3Backlogs?.filter(task=>{        
-            const tpm1bc = task.priority === 3;
-              return tpm1bc;
-            });
-  const tasksProjectManager3BacklogsLow = tasksProjectManager3Backlogs?.filter(task=>{        
-            const tpm1bc = task.priority === 4;
-              return tpm1bc;
-            });
-  const tasksProjectManager3Active = tasksProjectManager3?.filter(task=>{        
-            const date = new Date(task.end_date)
-            const timestamp = date.getTime()
-              return timestamp > Date.now()
-            });
-  const tasksProjectManager3ActiveCritical = tasksProjectManager3Active?.filter(task=>{        
-              const tpm1bc = task.priority === 1;
-                return tpm1bc;
-              });
-  const tasksProjectManager3ActiveHigh = tasksProjectManager3Active?.filter(task=>{        
-              const tpm1bc = task.priority === 2;
-                return tpm1bc;
-              });
-  const tasksProjectManager3ActiveMedium = tasksProjectManager3Active?.filter(task=>{        
-              const tpm1bc = task.priority === 3;
-                return tpm1bc;
-              });
-  const tasksProjectManager3ActiveLow = tasksProjectManager3Active?.filter(task=>{        
-              const tpm1bc = task.priority === 4;
-                return tpm1bc;
-              });
-  const tasksProjectManager4 = tasks?.filter(task=>{
-                const tpm1 = task.project_manager === 5;
-                    return tpm1;
-                });
-  const tasksProjectManager4Backlogs = tasksProjectManager4?.filter(task=>{        
-                const date = new Date(task.end_date)
-                const timestamp = date.getTime()
-                  return timestamp < Date.now()
-                });
-  const tasksProjectManager4BacklogsCritical = tasksProjectManager4Backlogs?.filter(task=>{        
-                const tpm1bc = task.priority === 1;
-                  return tpm1bc;
-                });
-  const tasksProjectManager4BacklogsHigh = tasksProjectManager4Backlogs?.filter(task=>{        
-                const tpm1bc = task.priority === 2;
-                  return tpm1bc;
-                });
-  const tasksProjectManager4BacklogsMedium = tasksProjectManager4Backlogs?.filter(task=>{        
-                const tpm1bc = task.priority === 3;
-                  return tpm1bc;
-                });
-  const tasksProjectManager4BacklogsLow = tasksProjectManager4Backlogs?.filter(task=>{        
-                const tpm1bc = task.priority === 4;
-                  return tpm1bc;
-                });
-            
-  const tasksProjectManager4Active = tasksProjectManager4?.filter(task=>{        
-                const date = new Date(task.end_date)
-                const timestamp = date.getTime()
-                  return timestamp > Date.now()
-                });
-  const tasksProjectManager4ActiveCritical = tasksProjectManager4Active?.filter(task=>{        
-                  const tpm1bc = task.priority === 1;
-                    return tpm1bc;
-                  });
-  const tasksProjectManager4ActiveHigh = tasksProjectManager4Active?.filter(task=>{        
-                  const tpm1bc = task.priority === 2;
-                    return tpm1bc;
-                  });
-  const tasksProjectManager4ActiveMedium = tasksProjectManager4Active?.filter(task=>{        
-                  const tpm1bc = task.priority === 3;
-                    return tpm1bc;
-                  });
-  const tasksProjectManager4ActiveLow = tasksProjectManager4Active?.filter(task=>{        
-                  const tpm1bc = task.priority === 4;
-                    return tpm1bc;
-                  });
-  const tasksProjectManager5 = tasks?.filter(task=>{
-                    const tpm1 = task.project_manager === 6;
-                        return tpm1;
-                    });
-  const tasksProjectManager5Backlogs = tasksProjectManager5?.filter(task=>{        
-                    const date = new Date(task.end_date)
-                    const timestamp = date.getTime()
-                      return timestamp < Date.now()
-                    });
-  const tasksProjectManager5BacklogsCritical = tasksProjectManager5Backlogs?.filter(task=>{        
-                    const tpm1bc = task.priority === 1;
-                      return tpm1bc;
-                    });
-  const tasksProjectManager5BacklogsHigh = tasksProjectManager5Backlogs?.filter(task=>{        
-                    const tpm1bc = task.priority === 2;
-                      return tpm1bc;
-                    });
-  const tasksProjectManager5BacklogsMedium = tasksProjectManager5Backlogs?.filter(task=>{        
-                    const tpm1bc = task.priority === 3;
-                      return tpm1bc;
-                    });
-  const tasksProjectManager5BacklogsLow = tasksProjectManager5Backlogs?.filter(task=>{        
-                    const tpm1bc = task.priority === 4;
-                      return tpm1bc;
-                    });
-                
-  const tasksProjectManager5Active = tasksProjectManager5?.filter(task=>{        
-                    const date = new Date(task.end_date)
-                    const timestamp = date.getTime()
-                      return timestamp > Date.now()
-                    });
-  const tasksProjectManager5ActiveCritical = tasksProjectManager5Active?.filter(task=>{        
-                      const tpm1bc = task.priority === 1;
-                        return tpm1bc;
-                      });
-  const tasksProjectManager5ActiveHigh = tasksProjectManager5Active?.filter(task=>{        
-                      const tpm1bc = task.priority === 2;
-                        return tpm1bc;
-                      });
-  const tasksProjectManager5ActiveMedium = tasksProjectManager5Active?.filter(task=>{        
-                      const tpm1bc = task.priority === 3;
-                        return tpm1bc;
-                      });
-  const tasksProjectManager5ActiveLow = tasksProjectManager5Active?.filter(task=>{        
-                      const tpm1bc = task.priority === 4;
-                        return tpm1bc;
-                      });
+  const getPriorityActive = (manager, priority) => {
+    return tasks.filter((task) => {
+      return (new Date(task.end_date).getTime() > Date.now()) && task.project_manager === manager && task.priority === priority
+    })
+  }
+  
+  const getPriorityBacklogs = (manager, priority) => {
+    return tasks.filter((task) => {
+      return (new Date(task.end_date).getTime() < Date.now()) && task.project_manager === manager && task.priority === priority
+    })
+  }
+
+  const projectManager1ActiveCriticalTasks = getPriorityActive(2, 1);
+  const projectManager1ActiveHighTasks = getPriorityActive(2, 2);
+  const projectManager1ActiveMediumTasks = getPriorityActive(2, 3);
+  const projectManager1ActiveLowTasks = getPriorityActive(2, 4);
+
+  const projectManager2ActiveCriticalTasks = getPriorityActive(3, 1);
+  const projectManager2ActiveHighTasks = getPriorityActive(3, 2);
+  const projectManager2ActiveMediumTasks = getPriorityActive(3, 3);
+  const projectManager2ActiveLowTasks = getPriorityActive(3, 4);
+
+  const projectManager3ActiveCriticalTasks = getPriorityActive(4, 1);
+  const projectManager3ActiveHighTasks = getPriorityActive(4, 2);
+  const projectManager3ActiveMediumTasks = getPriorityActive(4, 3);
+  const projectManager3ActiveLowTasks = getPriorityActive(4, 4);
+
+  const projectManager4ActiveCriticalTasks = getPriorityActive(5, 1);
+  const projectManager4ActiveHighTasks = getPriorityActive(5, 2);
+  const projectManager4ActiveMediumTasks = getPriorityActive(5, 3);
+  const projectManager4ActiveLowTasks = getPriorityActive(5, 4);
+
+  const projectManager5ActiveCriticalTasks = getPriorityActive(6, 1);
+  const projectManager5ActiveHighTasks = getPriorityActive(6, 2);
+  const projectManager5ActiveMediumTasks = getPriorityActive(6, 3);
+  const projectManager5ActiveLowTasks = getPriorityActive(6, 4);
+
+  const projectManager1BacklogsCriticalTasks = getPriorityBacklogs(2, 1);
+  const projectManager1BacklogsHighTasks = getPriorityBacklogs(2, 2);
+  const projectManager1BacklogsMediumTasks = getPriorityBacklogs(2, 3);
+  const projectManager1BacklogsLowTasks = getPriorityBacklogs(2, 4);
+
+  const projectManager2BacklogsCriticalTasks = getPriorityBacklogs(3, 1);
+  const projectManager2BacklogsHighTasks = getPriorityBacklogs(3, 2);
+  const projectManager2BacklogsMediumTasks = getPriorityBacklogs(3, 3);
+  const projectManager2BacklogsLowTasks = getPriorityBacklogs(3, 4);
+
+  const projectManager3BacklogsCriticalTasks = getPriorityBacklogs(4, 1);
+  const projectManager3BacklogsHighTasks = getPriorityBacklogs(4, 2);
+  const projectManager3BacklogsMediumTasks = getPriorityBacklogs(4, 3);
+  const projectManager3BacklogsLowTasks = getPriorityBacklogs(4, 4);
+
+  const projectManager4BacklogsCriticalTasks = getPriorityBacklogs(5, 1);
+  const projectManager4BacklogsHighTasks = getPriorityBacklogs(5, 2);
+  const projectManager4BacklogsMediumTasks = getPriorityBacklogs(5, 3);
+  const projectManager4BacklogsLowTasks = getPriorityBacklogs(5, 4);
+
+  const projectManager5BacklogsCriticalTasks = getPriorityBacklogs(6, 1);
+  const projectManager5BacklogsHighTasks = getPriorityBacklogs(6, 2);
+  const projectManager5BacklogsMediumTasks = getPriorityBacklogs(6, 3);
+  const projectManager5BacklogsLowTasks = getPriorityBacklogs(6, 4);
 
   const pm1backlogs = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager1BacklogsCritical.length,
+      Critical: projectManager1BacklogsCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager1BacklogsHigh.length,
+      High: projectManager1BacklogsHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager1BacklogsMedium.length,
+      Medium: projectManager1BacklogsMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager1BacklogsLow.length,
+      Low: projectManager1BacklogsLowTasks.length,
     }
   ];
   const pm2backlogs = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager2BacklogsCritical.length,
+      Critical: projectManager2BacklogsCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager2BacklogsHigh.length,
+      High: projectManager2BacklogsHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager2BacklogsMedium.length,
+      Medium: projectManager2BacklogsMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager2BacklogsLow.length,
+      Low: projectManager2BacklogsLowTasks.length,
     }
   ];
   const pm3backlogs = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager3BacklogsCritical.length,
+      Critical: projectManager3BacklogsCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager3BacklogsHigh.length,
+      High: projectManager3BacklogsHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager3BacklogsMedium.length,
+      Medium: projectManager3BacklogsMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager3BacklogsLow.length,
+      Low: projectManager3BacklogsLowTasks.length,
     }
   ];
   const pm4backlogs = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager4BacklogsCritical.length,
+      Critical: projectManager4BacklogsCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager4BacklogsHigh.length,
+      High: projectManager4BacklogsHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager4BacklogsMedium.length,
+      Medium: projectManager4BacklogsMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager4BacklogsLow.length,
+      Low: projectManager4BacklogsLowTasks.length,
     }
   ];
   const pm5backlogs = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager5BacklogsCritical.length,
+      Critical: projectManager5BacklogsCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager5BacklogsHigh.length,
+      High: projectManager5BacklogsHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager5BacklogsMedium.length,
+      Medium: projectManager5BacklogsMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager5BacklogsLow.length,
+      Low: projectManager5BacklogsLowTasks.length,
     }
   ];
   const pm1active = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager1ActiveCritical.length,
+      Critical: projectManager1ActiveCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager1ActiveHigh.length,
+      High: projectManager1ActiveHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager1ActiveMedium.length,
+      Medium: projectManager1ActiveMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager1ActiveLow.length,
+      Low: projectManager1ActiveLowTasks.length,
     }
   ];
   const pm2active = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager2ActiveCritical.length,
+      Critical: projectManager2ActiveCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager2ActiveHigh.length,
+      High: projectManager2ActiveHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager2ActiveMedium.length,
+      Medium: projectManager2ActiveMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager2ActiveLow.length,
+      Low: projectManager2ActiveLowTasks.length,
     }
   ];
   const pm3active = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager3ActiveCritical.length,
+      Critical: projectManager3ActiveCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager3ActiveHigh.length,
+      High: projectManager3ActiveHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager3ActiveMedium.length,
+      Medium: projectManager3ActiveMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager3ActiveLow.length,
+      Low: projectManager3ActiveLowTasks.length,
     }
   ];
   const pm4active = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager4ActiveCritical.length,
+      Critical: projectManager4ActiveCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager4ActiveHigh.length,
+      High: projectManager4ActiveHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager4ActiveMedium.length,
+      Medium: projectManager4ActiveMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager4ActiveLow.length,
+      Low: projectManager4ActiveLowTasks.length,
     }
   ];
   const pm5active = [
     {
       name: 'Critical',
-      Critical: tasksProjectManager5ActiveCritical.length,
+      Critical: projectManager5ActiveCriticalTasks.length,
     },
     {
       name: 'High',
-      High: tasksProjectManager5ActiveHigh.length,
+      High: projectManager5ActiveHighTasks.length,
     },
     {
       name: 'Medium',
-      Medium: tasksProjectManager5ActiveMedium.length,
+      Medium: projectManager5ActiveMediumTasks.length,
     },
     {
       name: 'Low',
-      Low: tasksProjectManager5ActiveLow.length,
+      Low: projectManager5ActiveLowTasks.length,
     }
   ];
     return ( 
@@ -443,8 +272,8 @@ const Dashboard = () => {
                   <Paper className={classes.projectManager} elevation={6}>Project Manager 1</Paper>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Backlogs</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Backlogs</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}
@@ -469,8 +298,8 @@ const Dashboard = () => {
                   </ResponsiveContainer>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Active Tasks</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Active Tasks</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}
@@ -502,8 +331,8 @@ const Dashboard = () => {
                   <Paper className={classes.projectManager} elevation={6}>Project Manager 2</Paper>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Backlogs</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Backlogs</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}
@@ -528,8 +357,8 @@ const Dashboard = () => {
                   </ResponsiveContainer>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Active Tasks</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Active Tasks</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}
@@ -561,8 +390,8 @@ const Dashboard = () => {
                   <Paper className={classes.projectManager} elevation={6}>Project Manager 3</Paper>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Backlogs</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Backlogs</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}
@@ -587,8 +416,8 @@ const Dashboard = () => {
                   </ResponsiveContainer>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Active Tasks</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Active Tasks</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}
@@ -620,8 +449,8 @@ const Dashboard = () => {
                   <Paper className={classes.projectManager} elevation={6}>Project Manager 4</Paper>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Backlogs</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Backlogs</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}
@@ -646,8 +475,8 @@ const Dashboard = () => {
                   </ResponsiveContainer>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Active Tasks</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Active Tasks</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}
@@ -679,8 +508,8 @@ const Dashboard = () => {
                   <Paper className={classes.projectManager} elevation={6}>Project Manager 5</Paper>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Backlogs</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Backlogs</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}
@@ -705,8 +534,8 @@ const Dashboard = () => {
                   </ResponsiveContainer>
                 </Grid>
                 <Grid item xs={12} sm={7}>
-                  <Paper elevation={6}>Active Tasks</Paper>
-                  <ResponsiveContainer width="100%" height="90%">
+                  <Paper className={classes.tableDescription} elevation={6}>Active Tasks</Paper>
+                  <ResponsiveContainer width="100%" height="85%">
                     <BarChart
                     width={500}
                     height={300}

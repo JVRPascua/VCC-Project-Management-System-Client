@@ -31,7 +31,7 @@ const Project = ({project, setCurrentId, currentId}) => {
         <Card className={classes.card} elevation={6}>
             <CardMedia className={classes.media} title={project.project_name}/>
             <div className={classes.overlay}>
-                <Typography variant="h6">{project.project_name }</Typography>
+                <Typography variant="h6"><strong>{project.project_name}</strong></Typography>
                 <div>
                 <Typography variant="body">Project Start: {startDate}</Typography>
                 </div>
@@ -68,7 +68,7 @@ const Project = ({project, setCurrentId, currentId}) => {
             </ButtonBase>
             <CardActions className={classes.cardActions}>
             {(userId === 1) && (
-                <Button size="small" color="primary" onClick={() => dispatch(deleteProject(project.projects_id))}>
+                <Button size="small" color="primary" variant="contained" onClick={() => dispatch(deleteProject(project.projects_id))}>
                     <DeleteIcon fontSize="small" />
                     Delete
                 </Button>

@@ -27,31 +27,21 @@ const ProjectTask = ({id, task, setCurrentId, currentId, project}) => {
  
     let tPriority = Number(task.priority);
     let priorityLabel;
-
+    let priorityIcon;
     if ((tPriority === 1)) {
         priorityLabel = "Critical Priority";
+        priorityIcon = <FiberManualRecordIcon sx={{ color: '#d50000' }} />
     }
     else if ((tPriority === 2)) {
         priorityLabel = "High Priority"
-    }
-    else if ((tPriority === 3)) {
-        priorityLabel = "Medium Priority"
-    } 
-    else if ((tPriority === 4)) {
-        priorityLabel = "Low Priority"
-    }
-    
-    let priorityIcon;
-    if ((tPriority === 1)){
-       priorityIcon = <FiberManualRecordIcon sx={{ color: '#d50000' }} />
-    }
-    else if ((tPriority === 2)) {
         priorityIcon = <FiberManualRecordIcon sx={{ color: '#ff6d00' }} />
     }
     else if ((tPriority === 3)) {
+        priorityLabel = "Medium Priority"
         priorityIcon = <FiberManualRecordIcon sx={{ color: '#ffff00' }} />
-    }
-    else if ((tPriority === 4)){
+    } 
+    else if ((tPriority === 4)) {
+        priorityLabel = "Low Priority"
         priorityIcon = <FiberManualRecordIcon sx={{ color: '#00c653' }} />
     }
     
@@ -59,7 +49,7 @@ const ProjectTask = ({id, task, setCurrentId, currentId, project}) => {
         <Card className={classes.card} elevation={6}>
             <CardMedia className={classes.media} title={task.project_name}/>
             <div className={classes.overlay}>
-                <Typography align="left" variant="h6"> {task.task_name }</Typography>
+                <Typography align="left" variant="h6"><strong>{task.task_name}</strong></Typography>
                 <div>
                 <Typography align="left" variant="body">Start: {startDate}</Typography>
                 </div>
@@ -85,12 +75,12 @@ const ProjectTask = ({id, task, setCurrentId, currentId, project}) => {
             <Typography variant="body2"  color="textSecondary">Description: {task.description}</Typography>
             </div>
             <div className={classes.details}>
-            <Typography variant="body2"  color="textSecondary"><div>{priorityIcon}{priorityLabel}</div></Typography>
+            <Typography variant="body2"  color="textSecondary"><div>{priorityIcon}<strong>{priorityLabel}</strong></div></Typography>
             </div>
             </CardContent> 
             </ButtonBase>
             <CardActions className={classes.cardActions}>
-                <Button size="small" color="primary" onClick={() => dispatch(deleteTask(task.tasks_id))}>
+                <Button size="small" variant="contained" color="primary" onClick={() => dispatch(deleteTask(task.tasks_id))}>
                     <DeleteIcon fontSize="small" />
                     Delete
                 </Button>

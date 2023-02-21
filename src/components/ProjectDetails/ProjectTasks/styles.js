@@ -20,7 +20,8 @@ export default makeStyles(() => ({
     heading: {
       fontFamily: 'rockwell',
       fontWeight: 600,
-      fontSize: 30
+      fontSize: 25,
+      
     },
     paper: {
       height: 650,

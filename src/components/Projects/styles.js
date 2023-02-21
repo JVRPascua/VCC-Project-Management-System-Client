@@ -11,7 +11,7 @@ export default makeStyles((theme  ) => ({
       width: 250,
       fontFamily: 'rockwell',
       fontWeight: 600,
-      fontSize: 30
+      fontSize: 30,
       },
       appBarSearch: {
         borderRadius: 0,

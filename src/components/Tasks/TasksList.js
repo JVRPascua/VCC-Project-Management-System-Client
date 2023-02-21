@@ -8,7 +8,6 @@ import useStyles from './stylesTasksList';
 const TasksList = () => {
     const tasks = useSelector((state) => state?.tasks);
     const classes = useStyles();
-    console.log(tasks);
 
     const tasksBacklogs = tasks?.filter(task=>{
         const notDone = task.is_done===false;

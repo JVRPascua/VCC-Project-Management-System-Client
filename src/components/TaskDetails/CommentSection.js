@@ -44,7 +44,7 @@ const CommentSection = ({ task }) => {
         <div>
             <div className={classes.CommentsOuterContainer}>
                 <div className={classes.CommentsInnerContainer}>
-                    <Typography gutterBottom marginTop variant="h5"><strong>Comments</strong></Typography>
+                    <Typography gutterBottom marginTop marginLeft variant="h6"><strong>Comments</strong></Typography>
                     <Divider />
                     {taskComments?.map((comment) => (
                     <Typography marginTop key={comment.id} align="left" marginLeft gutterBottom variant="subtitle1">
