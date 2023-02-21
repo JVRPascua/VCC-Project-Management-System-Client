@@ -20,16 +20,16 @@ const theme = createTheme({
       main: indigo[600],
     },
   },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          backgroundColor: "#FFFFFF",
-          backgroundImage: `linear-gradient(180deg, #FFFFFF  30%, #FF1913 100%)`,
-        },
-      },
-    },
-  },
+//  components: {
+//    MuiCssBaseline: {
+//      styleOverrides: {
+//        body: {
+//          backgroundColor: "#FFFFFF",
+//          backgroundImage: `linear-gradient(180deg, #FFFFFF  30%, #FF1913 100%)`,
+//        },
+//      },
+//    },
+//  },
 });
 
 function App() {

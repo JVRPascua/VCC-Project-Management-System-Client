@@ -18,10 +18,13 @@ export default makeStyles(() => ({
       width: 350,
     },
     heading: {
-      fontFamily: 'rockwell',
+      fontFamily: 'monospace',
       fontWeight: 600,
       fontSize: 25,
-      
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     paper: {
       height: 650,

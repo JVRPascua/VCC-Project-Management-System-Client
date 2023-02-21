@@ -60,7 +60,7 @@ const Projects = () => {
             <>
               {(userId === 1) && (
                 <>
-                <Button onClick={handleOpen} className={classes.searchButton} variant="contained" color="primary">Add Project</Button>
+                <Button onClick={handleOpen} variant="contained" color="primary">Add Project</Button>
                   <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                     <Box className={classes.box}>
                       <FormProject />

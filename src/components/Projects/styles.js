@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles';
 export default makeStyles((theme  ) => ({
       heading: {
       borderRadius: 0,
-      margin: '5px 59px',
+      margin: '5px 59px 20px',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',

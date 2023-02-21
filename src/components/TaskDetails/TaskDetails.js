@@ -58,9 +58,9 @@ const TaskDetails = () => {
         priorityIcon = <FiberManualRecordIcon sx={{ color: '#00c653' }} />
     }
     return ( 
-        <Grid container margin="30px 0px 0px 300px">
+        <Grid container margin="30px 0px 0px 0px">
             <Grid>
-                <Paper style={{ borderRadius: '0px', height: '450px', width: '500px', margin: '30px 0px 0px 0px'}} elevation={6}>
+                <Paper style={{ borderRadius: '20px', height: '450px', width: '500px', margin: '30px 0px 0px 270px'}} elevation={6}>
                     <div>
                     <Typography gutterBottom marginTop marginLeft variant="h6"><strong>{task[0]?.task_name}</strong></Typography>
                     </div>
@@ -78,7 +78,7 @@ const TaskDetails = () => {
                 </Paper>
             </Grid>
             <Grid>
-                <Paper style={{ borderRadius: '0px', height: "600px", width: '500px', margin: '30px 0px 0px 50px'}} elevation={6} sx={{ overflowY: "scroll"}}>
+                <Paper style={{ borderRadius: '20px', height: "600px", width: '500px', margin: '30px 0px 0px 50px'}} elevation={6} sx={{ overflowY: "scroll"}}>
                     <div>
                         <CommentSection task={task}/>
                     </div>
