@@ -4,12 +4,14 @@ import CommentSection from './CommentSection.js';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 import { getTask, taskDone } from '../../actions/tasks';
 import useStyles from './styles';
 
 
 const TaskDetails = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const classes = useStyles();
     const { id } = useParams();
@@ -20,6 +22,9 @@ const TaskDetails = () => {
     const endAt = new Date(task[0]?.end_date);
     const endDate = endAt.toLocaleDateString('en-US');
     const doneTask = task[0]?.task_done===true;
+    const goBack = () => {
+		navigate(-1);
+	}
     useEffect(() => {
         dispatch(getTask(id));
     }, [dispatch, id]);
@@ -60,6 +65,7 @@ const TaskDetails = () => {
     return ( 
         <Grid container margin="30px 0px 0px 0px">
             <Grid>
+            <Button style={{ borderRadius: '5px', height: '35px', width: '110px', margin: '30px 0px 0px 270px'}} onClick={goBack} variant="contained" color="primary">Back</Button>
                 <Paper style={{ borderRadius: '20px', height: '450px', width: '500px', margin: '30px 0px 0px 270px'}} elevation={6}>
                     <div>
                     <Typography gutterBottom marginTop marginLeft variant="h6"><strong>{task[0]?.task_name}</strong></Typography>
