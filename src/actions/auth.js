@@ -9,6 +9,6 @@ export const signin = (formData, navigate) => async (dispatch) => {
 
         navigate('/');
     } catch (error) {
-        console.log(error);
+        alert("Wrong credentials! Please try again.")
     }
 }

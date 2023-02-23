@@ -46,9 +46,9 @@ const ProjectDetails = () => {
             </Paper>
             <Grow in>
                 <Container>
-                    <Grid container justify="space-between" margin='15px 25px 10px 15px' justifyContent="flex-end" alignItems="stretch" spacing={3} className={classes}>
+                    <Grid container justify="space-between" margin='15px 25px 10px 15px' justifyContent="flex-end" alignItems="stretch" spacing={3}>
                     <>
-                    <Button onClick={handleOpen} className={classes.searchButton} variant="contained" color="primary">Add Task</Button>
+                    <Button onClick={handleOpen} variant="contained" color="primary">Add Task</Button>
                     <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                     <Box className={classes.box}>
                       <FormTask projectManager={projectManager} id={id}/>
@@ -56,7 +56,7 @@ const ProjectDetails = () => {
                     </Modal>
                     </>
                     </Grid>
-                    <Grid container justify="space-between" justifyContent="center" alignItems="stretch" spacing={3} className={classes}>
+                    <Grid container justify="space-between" justifyContent="center" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={15}>
                             <ProjectTasks id={id} project={project} currentId={currentId} setCurrentId={setCurrentId}/>
                         </Grid>

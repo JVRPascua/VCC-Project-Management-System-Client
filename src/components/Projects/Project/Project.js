@@ -68,7 +68,7 @@ const Project = ({project, setCurrentId, currentId}) => {
             </ButtonBase>
             <CardActions className={classes.cardActions}>
             {(userId === 1) && (
-                <Button size="small" color="primary" variant="contained" onClick={() => dispatch(deleteProject(project.projects_id))}>
+                    <Button size="small" color="primary" variant="contained" onClick={() => {if(window.confirm('Delete the project?')){dispatch(deleteProject(project.projects_id))}}}>
                     <DeleteIcon fontSize="small" />
                     Delete
                 </Button>

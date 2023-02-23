@@ -73,7 +73,7 @@ const TaskDetails = () => {
                     <Typography marginLeft gutterBottom variant="subtitle2">{task[0]?.description}</Typography>
                     <Typography marginLeft gutterBottom variant="subtitle2">{priorityIcon}<strong>{priorityLabel}</strong></Typography>
                     <div>
-                    <Button style={{margin: '175px'}}  variant="contained" disabled={isButtonDisabled} onClick={handleDone}>Mark as Done</Button>
+                    <Button style={{margin: '175px'}}  variant="contained" disabled={isButtonDisabled} onClick={() => {if(window.confirm('Mark as done?')){handleDone()};}}>Mark as Done</Button>
                     </div>
                 </Paper>
             </Grid>

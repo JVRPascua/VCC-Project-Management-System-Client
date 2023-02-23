@@ -79,7 +79,7 @@ const Task = ({id, task, setCurrentId, currentId, project}) => {
             </CardContent> 
             </ButtonBase>
             <CardActions className={classes.cardActions}>
-                <Button size="small" variant="contained" color="primary" onClick={() => dispatch(deleteTask(task.tasks_id))}>
+                <Button size="small" variant="contained" color="primary" onClick={() => {if(window.confirm('Delete task?')){dispatch(deleteTask(task.tasks_id))}}}>
                     <DeleteIcon fontSize="small" />
                     Delete
                 </Button>
