@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom"
+
 import Dashboard from "./components/Dashboard/Dashboard";
 import Projects from "./components/Projects/Projects";
 import Tasks from "./components/Tasks/Tasks";
@@ -8,7 +9,7 @@ import LoginPage from "./components/LoginPage/LoginPage";
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 import TaskDetails from './components/TaskDetails/TaskDetails';
 import Sidebar from "./components/Sidebar/Sidebar";
-import { red, grey, indigo } from '@mui/material/colors';
+import { indigo } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -20,20 +21,9 @@ const theme = createTheme({
       main: indigo[600],
     },
   },
-//  components: {
-//    MuiCssBaseline: {
-//      styleOverrides: {
-//        body: {
-//          backgroundColor: "#FFFFFF",
-//          backgroundImage: `linear-gradient(180deg, #FFFFFF  30%, #FF1913 100%)`,
-//        },
-//      },
-//    },
-//  },
 });
 
 function App() {
-
   const location = useLocation();
   const isLoggedIn = localStorage.getItem('profile');
 

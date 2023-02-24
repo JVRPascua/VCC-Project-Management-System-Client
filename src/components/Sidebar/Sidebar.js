@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
@@ -24,42 +23,29 @@ const drawerWidth = 240;
 
   const Sidebar = () => {
     const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
   const dispatch = useDispatch();
-
   const location = useLocation();
-
   const navigate = useNavigate();
 
   const logout = () => {
-
     localStorage.removeItem('profile');
-
     dispatch({ type: 'LOGOUT '});
-
     navigate('loginpage')
-
     setUser(null);
   }
-
   useEffect(() => {
     const token = user?.token;
-
     if (token) {
       const decodedToken = decode(token);
-
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
-
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
-
   let currentUser = {
     1: "General Manager",
     2: "Project Manager 1",
@@ -70,7 +56,6 @@ const drawerWidth = 240;
 }
   let userId = user?.result?.rows[0]?.users_id;
   const drawer = (
-    
     <div>
       <Toolbar><img src={vcclogo} alt="vcclogo" height="70px" width="150px" /></Toolbar>
       <Toolbar><AccountBoxIcon/>&nbsp;<strong>{currentUser[userId]}</strong></Toolbar>
@@ -125,32 +110,23 @@ const drawerWidth = 240;
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar
-        color="inherit"
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
-      >
-      </AppBar>
       <Box
+        background="#FF0000"
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth},
           }}
         >
           {drawer}

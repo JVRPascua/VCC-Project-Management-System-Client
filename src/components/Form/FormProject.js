@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {createProject, updateProject } from '../../actions/projects';
 import useStyles from './styles';
 
-const FormProject = ({ currentId, setCurrentId, handleClose }) => {
+const FormProject = ({ currentId }) => {
     const [projectData, setProjectData] = useState({ project_name: '', budget: '', start_date: '', end_date: '', 
     description: '', project_manager: '' });
     const classes = useStyles();

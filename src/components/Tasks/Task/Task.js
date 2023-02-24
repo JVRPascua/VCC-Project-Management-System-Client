@@ -10,7 +10,7 @@ import FormTask from '../../Form/FormTask';
 
 import useStyles from './styles';
 
-const Task = ({id, task, setCurrentId, currentId, project}) => {
+const Task = ({id, task, setCurrentId, currentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -21,12 +21,11 @@ const Task = ({id, task, setCurrentId, currentId, project}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    
     const openTask = () => navigate(`/tasks/${task.tasks_id}`);
- 
     let tPriority = Number(task.priority);
     let priorityLabel;
     let priorityIcon;
+    
     if ((tPriority === 1)) {
         priorityLabel = "Critical Priority";
         priorityIcon = <FiberManualRecordIcon sx={{ color: '#d50000' }} />

@@ -5,15 +5,11 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
-
 import { getTask, taskDone } from '../../actions/tasks';
-import useStyles from './styles';
-
 
 const TaskDetails = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const classes = useStyles();
     const { id } = useParams();
     const { task } = useSelector((state) => state?.task);
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -21,7 +17,7 @@ const TaskDetails = () => {
     const startDate = createdAt.toLocaleDateString('en-US');
     const endAt = new Date(task[0]?.end_date);
     const endDate = endAt.toLocaleDateString('en-US');
-    const doneTask = task[0]?.task_done===true;
+
     const goBack = () => {
 		navigate(-1);
 	}
@@ -43,7 +39,7 @@ const TaskDetails = () => {
         }
      }, [task[0]?.is_done]);
 
-     let tPriority = task[0]?.priority;
+    let tPriority = task[0]?.priority;
     let priorityLabel;
     let priorityIcon;
     if ((tPriority === 1)) {

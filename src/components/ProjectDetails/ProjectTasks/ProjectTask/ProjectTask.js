@@ -9,9 +9,8 @@ import { deleteTask } from '../../../../actions/tasks';
 import FormTask from '../../../Form/FormTask';
 
 import useStyles from './styles';
-import tasks from '../../../../reducers/tasks';
 
-const ProjectTask = ({id, task, setCurrentId, currentId, project}) => {
+const ProjectTask = ({id, task, setCurrentId, currentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -22,12 +21,11 @@ const ProjectTask = ({id, task, setCurrentId, currentId, project}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    
     const openTask = () => navigate(`/tasks/${task.tasks_id}`);
- 
     let tPriority = Number(task.priority);
     let priorityLabel;
     let priorityIcon;
+
     if ((tPriority === 1)) {
         priorityLabel = "Critical Priority";
         priorityIcon = <FiberManualRecordIcon sx={{ color: '#d50000' }} />
@@ -44,7 +42,6 @@ const ProjectTask = ({id, task, setCurrentId, currentId, project}) => {
         priorityLabel = "Low Priority"
         priorityIcon = <FiberManualRecordIcon sx={{ color: '#00c653' }} />
     }
-    
     return ( 
         <Card className={classes.card} elevation={6}>
             <CardMedia className={classes.media} title={task.project_name}/>

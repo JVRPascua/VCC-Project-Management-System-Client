@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { Container, Grow, Grid, Paper } from "@mui/material";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTasks } from "../../actions/tasks.js";
 import useStyles from "./styles.js";

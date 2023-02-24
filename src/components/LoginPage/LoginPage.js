@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Container, Paper, Typography, Grid, TextField, InputAdornment, IconButton, Button } from "@mui/material";
+import { Container, Paper, Grid, TextField, InputAdornment, IconButton, Button } from "@mui/material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useDispatch } from 'react-redux';
@@ -14,22 +14,16 @@ const initialState = { username: '', password: '' };
 
 const Login = () => {
 
-
     const classes = useStyles();
-
     const dispatch = useDispatch();
-
     const navigate = useNavigate();
-
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
-
     const [formData, setFormData] = useState(initialState);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         dispatch(signin(formData, navigate))
     }
 
@@ -57,11 +51,7 @@ const Login = () => {
                         InputProps={{
                             endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                >
+                                <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
                                 {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
                                 </IconButton>
                             </InputAdornment>

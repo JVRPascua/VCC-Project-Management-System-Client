@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Paper, Typography, CircularProgress, Divider, Container, Grow, Grid, AppBar, Button, Modal, Box } from '@mui/material';
+import { Paper, CircularProgress, Container, Grow, Grid, Button, Modal, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getProject } from '../../actions/projects';
 import { getProjectTasks } from '../../actions/tasks';
 import ProjectTasks from './ProjectTasks/ProjectTasks';
@@ -14,13 +14,13 @@ const ProjectDetails = () => {
     const { isLoading } = useSelector((state) => state?.projects);
     const dispatch = useDispatch();
     const project = useSelector((state) => state?.project);
-    const navigate = useNavigate();
     const {id} = useParams();
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const projectName = project.project[0]?.project_name
     const projectManager = project.project[0]?.project_manager
+    
     useEffect(() => {
         dispatch(getProject(id));
     }, [dispatch, id]);

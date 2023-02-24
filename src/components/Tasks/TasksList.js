@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Typography, Grid, Paper } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import { useSelector } from 'react-redux';
 import Task from "../Tasks/Task/Task.js";
 
@@ -17,7 +17,6 @@ const TasksList = () => {
             return timestamp < Date.now()
         }
         });
-
     const tasksActive = tasks?.filter(task=>{
         const notDone = task.is_done===false;
         const date = new Date(task.end_date)
@@ -26,6 +25,7 @@ const TasksList = () => {
             return timestamp > Date.now()
         }
         });
+        
     return ( 
         <>
         <Grid container justify="center" margin='-10px 0px 0px 25px'spacing={3}>

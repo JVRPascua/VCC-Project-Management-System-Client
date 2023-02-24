@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Typography, AppBar } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 import ProjectTask from './ProjectTask/ProjectTask.js';
 
@@ -17,7 +17,6 @@ const ProjectTasks = ({ setCurrentId, currentId, project }) => {
             return timestamp < Date.now()
         }
         });
-
     const projectTasksActive = projectTasks?.filter(task=>{
         const notDone = task.is_done===false;
         const date = new Date(task.end_date)
@@ -26,7 +25,6 @@ const ProjectTasks = ({ setCurrentId, currentId, project }) => {
             return timestamp > Date.now()
         }
         });
-    
     const projectTasksDone = projectTasks?.filter(task=>{
         const done = task.is_done===true;
         if(done){
@@ -38,7 +36,6 @@ const ProjectTasks = ({ setCurrentId, currentId, project }) => {
     return ( 
             <>
             <Grid container justify="center" margin='-10px 0px 0px 25px'spacing={3}>
-                {/*Render 3 empty black boxes as items of this container*/}
             <Grid key={1} item >
             <Paper className={classes.heading} elevation={6}>
             {projectTasksBacklogs.length} Backlogs
@@ -65,7 +62,7 @@ const ProjectTasks = ({ setCurrentId, currentId, project }) => {
             </Grid>
             <Grid key={3} item>
             <Paper className={classes.heading} elevation={6}>
-            Done Tasks
+                Done Tasks
             </Paper>
               <Paper className={classes.paper} elevation={6} sx={{ overflowY: "scroll"}}>
               {projectTasksDone?.map((task) => (

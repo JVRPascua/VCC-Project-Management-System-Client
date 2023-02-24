@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper, Autocomplete} from "@mui/material"
 import { useDispatch, useSelector } from 'react-redux';
 import {createTask, updateTask} from '../../actions/tasks';
-import { useParams } from 'react-router-dom';
 
 import useStyles from './styles';
 

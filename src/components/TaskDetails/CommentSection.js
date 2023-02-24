@@ -2,31 +2,31 @@ import React, { useState, useRef, useEffect } from "react";
 import { Typography, TextField, Button, Divider } from "@mui/material";
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from "react-redux";
+import { io } from 'socket.io-client';
 import { commentTask, getTaskComments } from '../../actions/comments.js';
 
 import useStyles from './styles';
 
 const CommentSection = ({ task }) => {
+    const socket = io("http://localhost:8000")
     const classes = useStyles();
     const dispatch = useDispatch();
     const [comment, setComment] = useState({ commentText:'', selectedFile: ''});
-    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const user = JSON.parse(localStorage.getItem('profile'));
     const userId = user?.result?.rows[0]?.users_id;
     const taskComments = useSelector((state) => state?.comments);
     const [comments, setComments] = useState((state) => state?.comments);
     const id = task[0]?.tasks_id;
     const commentsRef = useRef();
+
     useEffect(() => {
         dispatch(getTaskComments(id));
     }, [dispatch, id]);
-
     const handleClick = () => {
         dispatch(commentTask({...comment}, task[0].tasks_id, userId, task[0].project));
 
         setComment({ commentText: '', selectedFile: ''})
     }
-
     let commentUser = {
         1: "General Manager",
         2: "Project Manager 1",
@@ -35,7 +35,6 @@ const CommentSection = ({ task }) => {
         5: "Project Manager 4",
         6: "Project Manager 5",
     }
-
     useEffect(() => {
         commentsRef.current?.scrollIntoView({behavior: 'smooth'});
       }, [taskComments]);

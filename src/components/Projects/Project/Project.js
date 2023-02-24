@@ -18,7 +18,6 @@ const Project = ({project, setCurrentId, currentId}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();

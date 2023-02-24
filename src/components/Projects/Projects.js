@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useStyles from "./styles.js";
-import { Container, AppBar, Typography, Grow, Grid, Paper, TextField, Button, Modal, Box } from "@mui/material";
+import { Container, AppBar, Grow, Grid, Paper, TextField, Button, Modal, Box } from "@mui/material";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { getProjectsBySearch} from "../../actions/projects";
@@ -8,9 +8,7 @@ import FormProject from "../Form/FormProject.js";
 import ProjectList from "./ProjectList.js";
 import Pagination from "../Pagination";
 
-
 function useQuery() {
-
  return new URLSearchParams(useLocation().search);
 }
 
@@ -34,7 +32,6 @@ const Projects = () => {
         searchProject();
       }
     }
-
     const searchProject = () => {
       if(search.trim()) {
         dispatch(getProjectsBySearch({search}));
@@ -43,7 +40,6 @@ const Projects = () => {
         navigate('/projects');
       }
     }
-
 
     return ( 
       <Container maxwidth="lg">
@@ -54,7 +50,7 @@ const Projects = () => {
         <Container maxWidth="xl">
           <Grid container justify="space-between" justifyContent="flex-end" alignItems="stretch" spacing={3} className={classes}>
             <Grid item xs={12} sm={7}>
-                  <ProjectList currentId={currentId} setCurrentId={setCurrentId}/>
+              <ProjectList currentId={currentId} setCurrentId={setCurrentId}/>
             </Grid>
             <Grid item xs={12} sm={4}>
             <>
@@ -67,8 +63,8 @@ const Projects = () => {
                     </Box>
                 </Modal>
                 </>
-                )}
-              </>
+              )}
+            </>
             {(!searchQuery) && (
                 <Paper elevation={6} className={classes.pagination}>
                 <Pagination page={page} currentId={currentId}/>

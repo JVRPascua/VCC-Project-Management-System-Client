@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Typography, Container, Grow, Grid, AppBar, Paper} from '@mui/material';
+import { Container, Grow, Grid, Paper} from '@mui/material';
 import { getTasks } from '../../actions/tasks';
 import TasksList from './TasksList';
 import useStyles from "./styles.js";
