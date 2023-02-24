@@ -18,14 +18,10 @@ import TaskIcon from '@mui/icons-material/Task';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import vcclogo from '../../images/vcclogo.jpg';
+import vcclogo from '../../images/vcclogo.png';
 const drawerWidth = 240;
 
   const Sidebar = () => {
-    const [mobileOpen, setMobileOpen] = React.useState(false);
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
@@ -57,7 +53,7 @@ const drawerWidth = 240;
   let userId = user?.result?.rows[0]?.users_id;
   const drawer = (
     <div>
-      <Toolbar><img src={vcclogo} alt="vcclogo" height="70px" width="150px" /></Toolbar>
+      <Toolbar><img src={vcclogo} alt="vcclogo" height="60px" width="150px" /></Toolbar>
       <Toolbar><AccountBoxIcon/>&nbsp;<strong>{currentUser[userId]}</strong></Toolbar>
       <List>
           <ListItem disablePadding>
@@ -105,8 +101,6 @@ const drawerWidth = 240;
     </div>
   );
 
-  const container = window !== undefined ? () => window.document.body : undefined;
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -117,25 +111,10 @@ const drawerWidth = 240;
         aria-label="mailbox folders"
       >
         <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth},
-          }}
-        >
-          {drawer}
-        </Drawer>
-        <Drawer
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, borderRadius: "25px", backgroundColor: "#FAACA8", backgroundImage: `linear-gradient(0deg, #FF1913 5%, #FFFFFF 100%)`,},
           }}
           open
         >
