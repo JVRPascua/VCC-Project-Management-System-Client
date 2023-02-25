@@ -73,7 +73,7 @@ const FormProject = ({ currentId }) => {
             <TextField required name="description" variant="outlined" label="Description" 
             fullWidth="true" value={projectData.description} onChange={(e) => setProjectData({ ...projectData, description: e.target.value })}/>
             <Autocomplete required options={projectManager} sx={{ width: 380 }} isOptionEqualToValue={(option) => option.label} onChange={(event, newValue) => {setProjectData({ ...projectData, project_manager: newValue.value });}} renderInput={(params) => (<TextField {...params} placeholder="Project Manager" />)}/>
-            <Button className={classes.buttonSubmit} color="primary" size="large" type="submit" fullWidth="true">Submit</Button>
+            <Button className={classes.buttonSubmit} color="primary" size="large" type="submit" fullWidth="true"><strong>Submit</strong></Button>
             <Button color="secondary" size="small" onClick={clear} fullWidth="true">Clear</Button>
             </form>
         </Paper>

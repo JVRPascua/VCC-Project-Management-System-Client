@@ -3,16 +3,20 @@ import useStyles from "./styles.js";
 import { Container, AppBar, Grow, Grid, Paper, TextField, Button, Modal, Box } from "@mui/material";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
+import Calendar from 'react-calendar';
 import { getProjectsBySearch} from "../../actions/projects";
 import FormProject from "../Form/FormProject.js";
 import ProjectList from "./ProjectList.js";
 import Pagination from "../Pagination";
+
+import 'react-calendar/dist/Calendar.css';
 
 function useQuery() {
  return new URLSearchParams(useLocation().search);
 }
 
 const Projects = () => {
+    const [value, onChange] = useState(new Date());
     const [currentId, setCurrentId] = useState(null); 
     const user = JSON.parse(localStorage.getItem('profile'));
     const userId = user?.result?.rows[0]?.users_id;
@@ -74,6 +78,7 @@ const Projects = () => {
                 <TextField name="search" variant="outlined" label="Search Project" fullWidth onKeyUp={handleKeyPress} value={search} onChange={(e) => setSearch(e.target.value)}/>
                 <Button onClick={searchProject} className={classes.searchButton} variant="contained" color="primary">Search</Button>
               </AppBar>
+              <Calendar onChange={onChange} value={value} />
             </Grid>
           </Grid>
         </Container>

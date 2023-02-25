@@ -65,7 +65,7 @@ const FormTask = ({ id, currentId, projectManager }) => {
             <TextField required name="description" variant="outlined" label="Description" 
             fullWidth="true" value={taskData.description} onChange={(e) => setTaskData({ ...taskData, description: e.target.value })}/>
             <Autocomplete required options={priority} sx={{ width: 380 }} isOptionEqualToValue={(option) => option.label} onChange={(event, newValue) => {setTaskData({ ...taskData, priority: newValue.value });}} renderInput={(params) => (<TextField {...params} placeholder="Priority Level" />)}/>
-            <Button className={classes.buttonSubmit} color="primary" size="large" type="submit" fullWidth="true">Submit</Button>
+            <Button className={classes.buttonSubmit} color="primary" size="large" type="submit" fullWidth="true"><strong>Submit</strong></Button>
             <Button color="secondary" size="small" onClick={clear} fullWidth="true">Clear</Button>
             </form>
         </Paper>      

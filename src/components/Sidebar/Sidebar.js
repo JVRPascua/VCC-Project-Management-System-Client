@@ -19,7 +19,6 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import vcclogo from '../../images/vcclogo.png';
-const drawerWidth = 240;
 
   const Sidebar = () => {
 
@@ -107,14 +106,14 @@ const drawerWidth = 240;
       <Box
         background="#FF0000"
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: 240 }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
         <Drawer
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, borderRadius: "25px", backgroundColor: "#FAACA8", backgroundImage: `linear-gradient(0deg, #FF1913 5%, #FFFFFF 100%)`,},
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240, borderRadius: "25px", backgroundColor: "#FAACA8", backgroundImage: `linear-gradient(0deg, #FF1913 5%, #FFFFFF 95%)`,},
           }}
           open
         >

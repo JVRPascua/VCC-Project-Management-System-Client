@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Paper } from "@mui/material";
 import { useSelector } from 'react-redux';
 import Task from "../Tasks/Task/Task.js";
+import Calendar from 'react-calendar';
 
+import 'react-calendar/dist/Calendar.css';
 import useStyles from './stylesTasksList';
 
 const TasksList = () => {
+    const [value, onChange] = useState(new Date());
     const tasks = useSelector((state) => state?.tasks);
     const classes = useStyles();
 
@@ -25,7 +28,7 @@ const TasksList = () => {
             return timestamp > Date.now()
         }
         });
-        
+
     return ( 
         <>
         <Grid container justify="center" margin='-10px 0px 0px 25px'spacing={3}>
@@ -52,6 +55,9 @@ const TasksList = () => {
                 </Grid>
             ))}
             </Paper>
+        </Grid>
+        <Grid margin='25px 0px 0px 25px'>
+            <Calendar onChange={onChange} value={value} />
         </Grid>
         </Grid>
         </>
