@@ -3,8 +3,8 @@ import { Paper, Typography, Divider, Grid, Button } from '@mui/material';
 import CommentSection from './CommentSection.js';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import {useNavigate} from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useQuery } from "@tanstack/react-query";
 import { getTask, taskDone } from '../../actions/tasks';
 
 const TaskDetails = () => {
@@ -21,9 +21,11 @@ const TaskDetails = () => {
     const goBack = () => {
 		navigate(-1);
 	}
-    useEffect(() => {
-        dispatch(getTask(id));
-    }, [dispatch, id]);
+
+    const getTaskQuery = useQuery({
+        queryKey: ["task", id],
+        queryFn: dispatch(getTask(id)),
+    });
 
     const handleDone = () => {
         dispatch(taskDone(task[0]?.tasks_id));

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Typography, TextField, Button, Divider } from "@mui/material";
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
 import { io } from 'socket.io-client';
 import { commentTask, getTaskComments } from '../../actions/comments.js';
 
@@ -19,9 +20,10 @@ const CommentSection = ({ task }) => {
     const id = task[0]?.tasks_id;
     const commentsRef = useRef();
 
-    useEffect(() => {
-        dispatch(getTaskComments(id));
-    }, [dispatch, id]);
+    const getTaskCommentsQuery = useQuery({
+        queryKey: ["taskcomments", id],
+        queryFn: dispatch(getTaskComments(id)),
+    });
     const handleClick = () => {
         dispatch(commentTask({...comment}, task[0].tasks_id, userId, task[0].project));
 

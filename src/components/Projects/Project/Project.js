@@ -72,6 +72,7 @@ const Project = ({project, setCurrentId, currentId}) => {
                     Delete
                 </Button>
                 )}
+            
             </CardActions>    
         </Card>
         );

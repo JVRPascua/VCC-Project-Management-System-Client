@@ -1,7 +1,8 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Container, Grow, Grid, Paper } from "@mui/material";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useDispatch, useSelector } from 'react-redux';
+import { useQuery } from "@tanstack/react-query";
 import { getTasks } from "../../actions/tasks.js";
 import useStyles from "./styles.js";
 
@@ -12,9 +13,10 @@ const Dashboard = () => {
   const userId = user?.result?.rows[0]?.users_id;
   const tasks = useSelector((state) => state?.tasks);
 
-  useEffect(() => {
-    dispatch(getTasks(userId));
-  }, [dispatch, userId]);
+  const getTasksQuery = useQuery({
+    queryKey: ["tasks", userId],
+    queryFn: dispatch(getTasks(userId)),
+});
 
   const getPriorityActive = (manager, priority) => {
     return tasks.filter((task) => {

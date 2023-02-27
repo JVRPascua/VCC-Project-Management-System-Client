@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom"
-
 import Dashboard from "./components/Dashboard/Dashboard";
 import Projects from "./components/Projects/Projects";
 import Tasks from "./components/Tasks/Tasks";

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Paper, CircularProgress, Container, Grow, Grid, Button, Modal, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useQuery } from "@tanstack/react-query";
 import { getProject } from '../../actions/projects';
 import { getProjectTasks } from '../../actions/tasks';
 import ProjectTasks from './ProjectTasks/ProjectTasks';
@@ -24,10 +25,17 @@ const ProjectDetails = () => {
     useEffect(() => {
         dispatch(getProject(id));
     }, [dispatch, id]);
-
     useEffect(() => {
         dispatch(getProjectTasks(id, currentId));
     }, [dispatch, id, currentId]);
+//    const getProjectQuery = useQuery({
+//        queryKey: ["projects", id],
+//        queryFn: dispatch(getProject(id)),
+//    });
+//    const getProjectTasksQuery = useQuery({
+//        queryKey: ["projecttasks", id, currentId],
+//        queryFn: dispatch(getProjectTasks(id, currentId)),
+//    });
 
     if(!project) return null;
 

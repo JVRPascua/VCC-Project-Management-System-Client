@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useQuery } from "@tanstack/react-query";
 import { Container, Grow, Grid, Paper} from '@mui/material';
 import { getTasks } from '../../actions/tasks';
 import TasksList from './TasksList';
@@ -11,9 +12,10 @@ const Tasks = () => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const id = user?.result?.rows[0]?.users_id;
 
-    useEffect(() => {
-        dispatch(getTasks(id));
-    }, [dispatch, id]);
+    const getTasksQuery = useQuery({
+        queryKey: ["tasks", id],
+        queryFn: dispatch(getTasks(id)),
+    });
 
     return ( 
         <Container maxWidth="lg">
