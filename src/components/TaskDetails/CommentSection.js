@@ -3,13 +3,11 @@ import { Typography, TextField, Button, Divider } from "@mui/material";
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-import { io } from 'socket.io-client';
 import { commentTask, getTaskComments } from '../../actions/comments.js';
 
 import useStyles from './styles';
 
 const CommentSection = ({ task }) => {
-    const socket = io("http://localhost:8000")
     const classes = useStyles();
     const dispatch = useDispatch();
     const [comment, setComment] = useState({ commentText:'', selectedFile: ''});
