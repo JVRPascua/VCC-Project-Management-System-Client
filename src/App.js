@@ -3,7 +3,6 @@ import { Routes, Route, useLocation, Navigate } from "react-router-dom"
 import Dashboard from "./components/Dashboard/Dashboard";
 import Projects from "./components/Projects/Projects";
 import Tasks from "./components/Tasks/Tasks";
-import ActivityLog from "./components/ActivityLog/ActivityLog";
 import LoginPage from "./components/LoginPage/LoginPage";
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
 import TaskDetails from './components/TaskDetails/TaskDetails';
@@ -38,7 +37,6 @@ function App() {
           <Route path="/" element= {isLoggedIn ? <Dashboard /> : <Navigate to="/loginpage" />} />
           <Route path="/projects" element= {isLoggedIn ?  <Projects /> : <Navigate to="/loginpage" />} />
           <Route path="/tasks" element= {isLoggedIn ?  <Tasks /> : <Navigate to="/loginpage" />} />
-          <Route path="/activitylog" element= {isLoggedIn ?  <ActivityLog /> : <Navigate to="/loginpage" />} />
           <Route path="/projects/search" element= {isLoggedIn ? <Projects /> : <Navigate to="/loginpage" />} />
           <Route path="/projects/:id" element= {isLoggedIn ?  <ProjectDetails /> : <Navigate to="/loginpage" />} />
           <Route path="/tasks/:id" element= {isLoggedIn ?  <TaskDetails /> : <Navigate to="/loginpage" />} />

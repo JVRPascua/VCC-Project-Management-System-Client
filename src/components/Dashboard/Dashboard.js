@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   const getTasksQuery = useQuery({
     queryKey: ["tasks", userId],
-    queryFn: dispatch(getTasks(userId)),
+    queryFn: () => dispatch(getTasks(userId)),
 });
 
   const getPriorityActive = (manager, priority) => {

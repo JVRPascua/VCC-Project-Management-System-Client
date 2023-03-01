@@ -14,7 +14,7 @@ const Tasks = () => {
 
     const getTasksQuery = useQuery({
         queryKey: ["tasks", id],
-        queryFn: dispatch(getTasks(id)),
+        queryFn: () => dispatch(getTasks(id)),
     });
 
     return ( 

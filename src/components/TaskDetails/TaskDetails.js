@@ -24,7 +24,7 @@ const TaskDetails = () => {
 
     const getTaskQuery = useQuery({
         queryKey: ["task", id],
-        queryFn: dispatch(getTask(id)),
+        queryFn: () => dispatch(getTask(id)),
     });
 
     const handleDone = () => {

@@ -12,7 +12,7 @@ import CalendarComponent from "../Calendar/Calendar.js";
 import 'react-calendar/dist/Calendar.css';
 
 
-function useQuery() {
+function Query() {
  return new URLSearchParams(useLocation().search);
 }
 
@@ -22,7 +22,7 @@ const Projects = () => {
     const userId = user?.result?.rows[0]?.users_id;
     const classes = useStyles();
     const dispatch = useDispatch();
-    const query = useQuery();
+    const query = Query();
     const navigate  = useNavigate();
     const page = query.get('page') || 1;
     const searchQuery = query.get('searchQuery');
@@ -71,7 +71,7 @@ const Projects = () => {
             </>
             {(!searchQuery) && (
                 <Paper elevation={6} className={classes.pagination}>
-                <Pagination page={page} currentId={currentId}/>
+                <Pagination page={page}/>
                 </Paper>
               )}
               <AppBar className={classes.appBarSearch} position="static" color="inherit">

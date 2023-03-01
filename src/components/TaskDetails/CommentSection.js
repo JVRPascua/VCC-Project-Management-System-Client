@@ -20,7 +20,7 @@ const CommentSection = ({ task }) => {
 
     const getTaskCommentsQuery = useQuery({
         queryKey: ["taskcomments", id],
-        queryFn: dispatch(getTaskComments(id)),
+        queryFn: () => dispatch(getTaskComments(id)),
     });
     const handleClick = () => {
         dispatch(commentTask({...comment}, task[0].tasks_id, userId, task[0].project));

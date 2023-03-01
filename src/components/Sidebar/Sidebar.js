@@ -79,14 +79,6 @@ import vcclogo from '../../images/vcclogo.png';
               <ListItemText primary="Tasks" />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component={Link} to="/activitylog">
-              <ListItemIcon>
-                <FormatListBulletedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Activity Log" />
-            </ListItemButton>
-          </ListItem>
           <Divider />
           <ListItem disablePadding>
             <ListItemButton onClick={logout}>
